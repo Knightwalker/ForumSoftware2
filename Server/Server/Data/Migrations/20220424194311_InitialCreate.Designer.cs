@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Server.Data;
 
@@ -11,9 +12,10 @@ using Server.Data;
 namespace Server.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220424194311_InitialCreate")]
+    partial class InitialCreate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -165,29 +167,23 @@ namespace Server.Data.Migrations
 
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasMaxLength(2000)
-                        .HasColumnType("nvarchar(2000)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("ParentId")
+                        .IsRequired()
                         .HasColumnType("int");
 
                     b.Property<string>("Type")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
                     b.HasKey("Id");
 
                     b.HasIndex("ParentId");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("Forums");
                 });
@@ -211,17 +207,11 @@ namespace Server.Data.Migrations
                     b.Property<int>("TopicId")
                         .HasColumnType("int");
 
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
                     b.HasKey("Id");
 
                     b.HasIndex("TopicId");
 
-                    b.HasIndex("UserId");
-
-                    b.ToTable("Posts");
+                    b.ToTable("Post");
                 });
 
             modelBuilder.Entity("Server.Data.Models.Topic", b =>
@@ -239,15 +229,9 @@ namespace Server.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
                     b.HasKey("Id");
 
                     b.HasIndex("ForumId");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("Topics");
                 });
@@ -376,15 +360,7 @@ namespace Server.Data.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("Server.Data.Models.User", "User")
-                        .WithMany("Forums")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
                     b.Navigation("Parent");
-
-                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Server.Data.Models.Post", b =>
@@ -395,15 +371,7 @@ namespace Server.Data.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("Server.Data.Models.User", "User")
-                        .WithMany("Posts")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
                     b.Navigation("Topic");
-
-                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Server.Data.Models.Topic", b =>
@@ -414,15 +382,7 @@ namespace Server.Data.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("Server.Data.Models.User", "User")
-                        .WithMany("Topics")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
                     b.Navigation("Forum");
-
-                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Server.Data.Models.Forum", b =>
@@ -435,15 +395,6 @@ namespace Server.Data.Migrations
             modelBuilder.Entity("Server.Data.Models.Topic", b =>
                 {
                     b.Navigation("Posts");
-                });
-
-            modelBuilder.Entity("Server.Data.Models.User", b =>
-                {
-                    b.Navigation("Forums");
-
-                    b.Navigation("Posts");
-
-                    b.Navigation("Topics");
                 });
 #pragma warning restore 612, 618
         }
