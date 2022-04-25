@@ -1,1 +1,10 @@
-<h1>Home</h1>
+<div class="HomePage">
+    <div class="container">
+
+      <!-- {isLoadingForums ? <div>Loading...</div> : null}
+      {hasErrorsLoadingForums ? <div>ERROR: {hasErrorsLoadingForums.message} </div> : null}
+      {(isLoadingForums === false && !forums) ? <div>There are no forums</div> : null}
+      {(isLoadingForums === false && forums) ? <ForumsList forums={forums}></ForumsList> : null} -->
+        <app-forums-list [forumsArr]="forumsArr" ></app-forums-list>
+    </div>
+  </div>

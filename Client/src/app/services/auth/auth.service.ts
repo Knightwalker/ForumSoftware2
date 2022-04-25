@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import jwtDecode, { JwtPayload } from "jwt-decode";
 
 @Injectable({
     providedIn: 'root'
@@ -37,6 +38,13 @@ export class AuthService {
             return true;
         }
         return false;
+    }
+
+    getDecodedToken() {
+        debugger;
+        const token: string = localStorage.getItem("token") ?? "";
+        const decoded = jwtDecode<JwtPayload>(token); // Returns with the JwtPayload type
+        return decoded
     }
 
 }

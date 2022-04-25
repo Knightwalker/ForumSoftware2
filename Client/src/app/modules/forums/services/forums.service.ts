@@ -19,4 +19,9 @@ export class ForumsService {
         return this.http.post<any>(endpoint, data);
     }
 
+    getAll(): Observable<any> {
+        const endpoint = environment.apiUrl + "/forums/GetAll";
+        return this.http.get<any>(endpoint);
+    }
+
 }

@@ -1,0 +1,38 @@
+<div class="forums">
+    <ng-template ngFor let-parent [ngForOf]="forumsArr">
+
+        <div class="forum container-parent">
+            <div class="container-parent__name">{{parent.name}}</div>
+            <div class="container-parent__body">
+
+                <ng-template ngFor let-child [ngForOf]="parent.children">
+                    <div class="forum container-child">
+                        <div>
+                            <img src="https://i.servimg.com/u/f39/13/74/09/43/old10.png" alt=""/>
+                        </div>
+                        <div>
+                            <img class="forum__img" src={{child.imageUrl}} alt=""/>
+                        </div>
+                        <div class="forum__item3">
+                            <a [routerLink]="['/forum', child.id]">
+                            <div class="forum__name">{{child.name}}</div>
+                            </a>
+                            <div class="forum__description">{{child.description}}</div>
+                        </div>
+                        <div class="forum__item4">
+                            <!-- <p class="forum__stats-number">{{child.stats.topics_count}}</p> -->
+                            <p class="forum__stats-text">Topics</p>
+                        </div>
+                        <div class="forum__item5">
+                            <!-- <p class="forum__stats-number">{{child.stats.posts_count}}</p> -->
+                            <p class="forum__stats-text">Replies</p>
+                        </div>
+                    </div>
+                </ng-template>
+
+            </div>
+        </div>
+
+
+    </ng-template>
+</div>

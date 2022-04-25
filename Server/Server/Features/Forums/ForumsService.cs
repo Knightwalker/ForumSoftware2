@@ -20,6 +20,7 @@ namespace Server.Features.Forums
                 Type = model.Type,
                 Name = model.Name,
                 Description = model.Description,
+                ImageUrl = model.ImageUrl,
                 UserId = userId
             };
 
@@ -39,15 +40,17 @@ namespace Server.Features.Forums
                     Type = x.Type,
                     Name = x.Name,
                     Description= x.Description,
+                    ImageUrl= x.ImageUrl,
                     UserId= x.UserId,
                     User = x.User,
                     Children = x.Children.Select(c => new Forum
                     {
-                        Id = x.Id,
-                        Type = x.Type,
-                        Name = x.Name,
-                        Description = x.Description,
-                        UserId = x.UserId,
+                        Id = c.Id,
+                        Type = c.Type,
+                        Name = c.Name,
+                        Description = c.Description,
+                        ImageUrl = c.ImageUrl,
+                        UserId = c.UserId,
                     }).ToList()
                 })
                 .ToListAsync();
@@ -66,6 +69,7 @@ namespace Server.Features.Forums
                     Type = x.Type,
                     Name = x.Name,
                     Description = x.Description,
+                    ImageUrl = x.ImageUrl,
                     UserId = x.UserId,
                     User = x.User,
                     Children = x.Children.Select(f => new Forum
@@ -74,6 +78,7 @@ namespace Server.Features.Forums
                         Type = f.Type,
                         Name = f.Name,
                         Description = f.Description,
+                        ImageUrl = x.ImageUrl,
                         UserId = f.UserId,
                     }).ToList(),
                     Topics = x.Topics.Select(t => new Topic
@@ -109,6 +114,7 @@ namespace Server.Features.Forums
             forum.Type = model.Type;
             forum.Name = model.Name;
             forum.Description = model.Description;
+            forum.ImageUrl = model.ImageUrl;
 
             await this.dbContext.SaveChangesAsync();
 

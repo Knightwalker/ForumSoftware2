@@ -13,6 +13,8 @@ import { RegisterComponent } from './pages/register/register.component';
 import { AuthService } from './services/auth/auth.service';
 import { AuthGuardService } from './services/auth-guard/auth-guard.service';
 import { InterceptorService } from './services/interceptor/interceptor.service';
+import { LayoutComponent } from './components/layout/layout.component';
+import { ForumsService } from './modules/forums/services/forums.service';
 
 @NgModule({
   declarations: [
@@ -20,6 +22,7 @@ import { InterceptorService } from './services/interceptor/interceptor.service';
     LoginComponent,
     HomeComponent,
     RegisterComponent,
+    LayoutComponent,
   ],
   imports: [
     BrowserModule,
@@ -35,7 +38,8 @@ import { InterceptorService } from './services/interceptor/interceptor.service';
           provide: HTTP_INTERCEPTORS,
           useClass: InterceptorService,
           multi: true
-      }
+      },
+      ForumsService
   ],
   bootstrap: [AppComponent]
 })

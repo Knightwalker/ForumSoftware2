@@ -9,6 +9,7 @@ namespace Server.Data.Models
         public int? ParentId { get; set; }
         public string Type { get; set; } = "category";
         public string Name { get; set; }
+        public string ImageUrl { get; set; }
 
         [MaxLength(MaxDescriptionLength)]
         public string Description { get; set; }

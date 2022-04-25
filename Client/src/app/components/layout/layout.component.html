@@ -1,0 +1,85 @@
+<header>
+    <nav class="navbar">
+        <div class="navbar__left">
+          <a routerLink="/"><div class="nav__logo">Logo</div></a>
+        </div>
+        <div class="navbar__mid">
+          <ul class="nav__list-horizontal">
+            <li><a routerLink="/users"><div class="nav__item">Users</div></a></li>
+            <li><a routerLink="/groups"><div class="nav__item">Groups</div></a></li>
+          </ul>
+        </div>
+        <div class="navbar__right">
+          <ul class="nav__list-horizontal">
+            <ng-template [ngIf]="!isAuthenticated">
+                <li><a routerLink="/login"><div class="nav__item">Login</div></a></li>
+                <li><a routerLink="/register"><div class="nav__item">Register</div></a></li>
+            </ng-template>
+            <ng-template [ngIf]="isAuthenticated">
+                <li><a routerLink="/profile"><div class="nav__logo">Welcome, {{username}}</div></a></li>
+            </ng-template>
+          </ul>
+        </div>
+      </nav>
+    <div class="hero">
+        s
+    </div>
+</header>
+<div class="container flex-grow-1">
+    <main>
+        <ng-content></ng-content>
+    </main>
+</div>
+
+<footer class="footer">
+    <div class="footer-container">
+        <div class="footer-item1">
+            <h5 class="text-uppercase">Forum Software</h5>
+
+            <p>
+                This Forum is a free ReactJS powered flat-forum bulletin board software solution that can be used to
+                stay in touch with a group of people or can power your entire website.
+            </p>
+        </div>
+
+        <div class="footer-item2">
+            <h5 class="text-uppercase">Links</h5>
+
+            <ul class="list-unstyled mb-0">
+                <li>
+                    <a href="https://github.com/Knightwalker/forum-fe" class="text-white">Overview</a>
+                </li>
+                <li>
+                    <a href="https://github.com/Knightwalker/forum-fe" class="text-white">Technology</a>
+                </li>
+                <li>
+                    <a href="https://github.com/Knightwalker/forum-fe" class="text-white">Github</a>
+                </li>
+                <li>
+                    <a href="https://github.com/Knightwalker/forum-fe" class="text-white">Docs</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="footer-item3">
+            <h5 class="text-uppercase mb-0">About</h5>
+
+            <ul class="list-unstyled">
+                <li>
+                    <a href="https://github.com/Knightwalker/forum-fe" class="text-white">Team</a>
+                </li>
+                <li>
+                    <a href="https://github.com/Knightwalker/forum-fe" class="text-white">Community</a>
+                </li>
+                <li>
+                    <a href="https://github.com/Knightwalker/forum-fe" class="text-white">Support</a>
+                </li>
+                <li>
+                    <a href="https://github.com/Knightwalker/forum-fe" class="text-white">Privacy Policy</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="footer-bottom">Made with &hearts; by Knightwalker</div>
+</footer>

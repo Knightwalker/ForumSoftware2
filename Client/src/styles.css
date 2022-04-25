@@ -4,3 +4,40 @@
     padding: 20px;
     border: 3px solid #f7f7f9;
 }
+
+/* Grouping */
+p {
+    margin-block-start: 0px;
+    margin-block-end: 0px;
+}
+
+ul {
+    list-style-type: none;
+    margin-block-start: 0px;
+    margin-block-end: 0px;
+    padding-inline-start: 0px;
+}
+
+/* Text-level */
+a {
+    color: #000000;
+    text-decoration: none !important;
+}
+
+/* Blizzard Skin */
+body {
+    background: url(https://d3mle2j3as33lk.cloudfront.net/en/blizzard/plugins/discourse-blizzard-themes/images/backgrounds/blizzard/top.jpg) center -200px no-repeat, url(https://d3mle2j3as33lk.cloudfront.net/en/blizzard/plugins/discourse-blizzard-themes/images/backgrounds/blizzard/repeat.jpg) center -200px repeat-y;
+    background-color: #012750;
+}
+
+.nav__logo {
+    color: #fffffb !important;
+}
+
+.nav__item {
+    color: #fffffb !important;
+}
+
+.nav__item::after {
+    background: #fffffb !important;
+}
