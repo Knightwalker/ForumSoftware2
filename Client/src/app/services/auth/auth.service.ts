@@ -31,4 +31,12 @@ export class AuthService {
         return localStorage.getItem("token");
     }
 
+    isAuthenticated() {
+        const token = this.getToken();
+        if (token) {
+            return true;
+        }
+        return false;
+    }
+
 }

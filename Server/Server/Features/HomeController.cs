@@ -1,11 +1,11 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Server.Controllers
+namespace Server.Features
 {
     public class HomeController : ApiController
     {
-        //[Authorize]
+        [ApiExplorerSettings(IgnoreApi = true)] // Hide from Swagger, Otherwise we get NoMethod error
         public ActionResult Get()
         {
             return this.Ok("Works");

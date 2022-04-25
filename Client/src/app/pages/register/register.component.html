@@ -3,7 +3,7 @@
 <div class="row">
     <div class="col-4"></div>
     <div class="col-4">
-        <form [formGroup]="registerForm" (ngSubmit)="handleRegister()">
+        <form [formGroup]="registerForm" (ngSubmit)="handleRegister()" class="custom-form">
             <div class="form-group">
                 <label for="username">Username</label>
                 <input formControlName="username" id="username" class="form-control" type="text" placeholder="Enter username">

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Server.Models.Identity
+namespace Server.Features.Identity
 {
     public class RegisterRequestModel
     {   

@@ -1,9 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using static Server.Data.Validations.Forum;
 
-namespace Server.Models.Forum
+namespace Server.Features.Forums
 {
-    public class CreateForumModel
+    public class CreateForumsModel
     {
         public int? ParentId { get; set; }
         public string Type { get; set; } = "category";
