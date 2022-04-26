@@ -12,11 +12,11 @@
         </div>
         <div class="navbar__right">
           <ul class="nav__list-horizontal">
-            <ng-template [ngIf]="!isAuthenticated">
+            <ng-template [ngIf]="!isLoggedIn">
                 <li><a routerLink="/login"><div class="nav__item">Login</div></a></li>
                 <li><a routerLink="/register"><div class="nav__item">Register</div></a></li>
             </ng-template>
-            <ng-template [ngIf]="isAuthenticated">
+            <ng-template [ngIf]="isLoggedIn">
                 <li><a routerLink="/profile"><div class="nav__logo">Welcome, {{username}}</div></a></li>
                 <li><a routerLink="/logout"><div class="nav__logo">Logout</div></a></li>
             </ng-template>
@@ -39,7 +39,7 @@
             <h5 class="text-uppercase">Forum Software</h5>
 
             <p>
-                This Forum is a free ReactJS powered flat-forum bulletin board software solution that can be used to
+                This Forum is a free Angular powered flat-forum bulletin board software solution that can be used to
                 stay in touch with a group of people or can power your entire website.
             </p>
         </div>

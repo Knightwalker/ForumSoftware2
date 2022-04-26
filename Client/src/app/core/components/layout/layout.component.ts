@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from 'src/app/services/auth/auth.service';
+import { AuthService } from 'src/app/modules/users/services/auth.service';
 
 @Component({
     selector: 'app-layout',
@@ -7,16 +7,17 @@ import { AuthService } from 'src/app/services/auth/auth.service';
     styleUrls: ['./layout.component.css']
 })
 export class LayoutComponent implements OnInit {
-    public isAuthenticated: boolean = false;
+    public isLoggedIn: boolean;
     public username: string = "username";
     private authService: AuthService;
 
     constructor(authService: AuthService) {
         this.authService = authService;
+        this.isLoggedIn = false;
     }
 
     ngOnInit(): void {
-        this.isAuthenticated = this.authService.isAuthenticated();
+        this.isLoggedIn = this.authService.isAuthenticated();
     }
 
 }

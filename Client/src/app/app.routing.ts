@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { NotFoundComponent } from '../core/pages/not-found/not-found.component';
-import { CreateForumComponent } from '../modules/forums/pages/create-forum/create-forum.component';
-import { LoginComponent } from '../modules/users/pages/login/login.component';
-import { LogoutComponent } from '../modules/users/pages/logout/logout.component';
-import { ProfileComponent } from '../modules/users/pages/profile/profile.component';
-import { RegisterComponent } from '../modules/users/pages/register/register.component';
-import { AuthGuardService } from '../services/auth-guard/auth-guard.service';
-import { HomeComponent } from './home/home.component';
+import { HomeComponent } from './core/pages/home/home.component';
+import { NotFoundComponent } from './core/pages/not-found/not-found.component';
+import { CreateForumComponent } from './modules/forums/pages/create-forum/create-forum.component';
+import { LoginComponent } from './modules/users/pages/login/login.component';
+import { LogoutComponent } from './modules/users/pages/logout/logout.component';
+import { ProfileComponent } from './modules/users/pages/profile/profile.component';
+import { RegisterComponent } from './modules/users/pages/register/register.component';
+import { AuthGuardService } from './services/auth-guard/auth-guard.service';
 
 const routes: Routes = [
     {

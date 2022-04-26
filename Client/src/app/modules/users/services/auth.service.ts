@@ -8,9 +8,11 @@ import jwtDecode, { JwtPayload } from "jwt-decode";
     providedIn: 'root'
 })
 export class AuthService {
+    public isLoggedIn: boolean;
     private http: HttpClient;
 
-    constructor(http: HttpClient) { 
+    constructor(http: HttpClient) {
+        this.isLoggedIn = false;
         this.http = http;
     }
 
@@ -22,6 +24,11 @@ export class AuthService {
     register(data: any): Observable<any> {
         const endpoint = environment.apiUrl + "/identity/register";
         return this.http.post(endpoint, data);
+    }
+
+    logout(): void {
+        localStorage.removeItem("token");
+        this.isLoggedIn = false;
     }
 
     saveToken(token: string) {
