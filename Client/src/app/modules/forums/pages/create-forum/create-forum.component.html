@@ -1,8 +1,8 @@
-<h1>Create Forum</h1>
+<h1 class="text-center">Create Forum</h1>
 
-<div class="row">
-    <div class="col-4"></div>
-    <div class="col-4">
+<div class="row pt-2 pb-2">
+    <div class="col-0 col-sm-2 col-lg-4"></div>
+    <div class="col-12 col-sm-8 col-lg-4">
         <form [formGroup]="forumForm" (ngSubmit)="handleCreate()" class="custom-form">
             <div class="form-group">
                 <label for="type">Type</label>
@@ -23,5 +23,5 @@
             </div>
         </form>
     </div>
-    <div class="col-4"></div>
+    <div class="col-0 col-sm-2 col-lg-4"></div>
 </div>

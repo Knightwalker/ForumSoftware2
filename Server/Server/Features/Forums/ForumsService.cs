@@ -51,6 +51,11 @@ namespace Server.Features.Forums
                         Description = c.Description,
                         ImageUrl = c.ImageUrl,
                         UserId = c.UserId,
+                        Topics = c.Topics.Select(x => new Topic
+                        {
+                            Id= x.Id,
+                            Name = x.Name,
+                        }).ToList()
                     }).ToList()
                 })
                 .ToListAsync();

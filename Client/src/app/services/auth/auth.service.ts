@@ -41,7 +41,6 @@ export class AuthService {
     }
 
     getDecodedToken() {
-        debugger;
         const token: string = localStorage.getItem("token") ?? "";
         const decoded = jwtDecode<JwtPayload>(token); // Returns with the JwtPayload type
         return decoded

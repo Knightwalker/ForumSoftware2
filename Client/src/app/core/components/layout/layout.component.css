@@ -5,7 +5,11 @@
 }
 
 main {
-  background-color: #ece8e1;
+    margin: 5px;
+    border-radius: 5px;
+    box-sizing: border-box;
+    border: 1px solid black;
+    background-color: #ece8e1;
 }
 
 /* Header */
