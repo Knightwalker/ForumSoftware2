@@ -8,6 +8,7 @@
 
 /* Grouping */
 p {
+    margin-bottom: 0px !important; /* overwrite reboot.css */
     margin-block-start: 0px;
     margin-block-end: 0px;
 }
@@ -42,3 +43,5 @@ body {
 .nav__item::after {
     background: #fffffb !important;
 }
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

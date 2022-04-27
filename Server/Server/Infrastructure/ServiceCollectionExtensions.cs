@@ -7,7 +7,9 @@ using Server.Data;
 using Server.Data.Models;
 using Server.Features.Identity;
 using Server.Features.Forums;
+using Server.Features.Topics;
 using Swashbuckle.AspNetCore.SwaggerGen;
+using Server.Features.Posts;
 
 namespace Server.Infrastructure
 {
@@ -59,7 +61,9 @@ namespace Server.Infrastructure
         {
             services
                 .AddTransient<IdentityService, IdentityService>()
-                .AddTransient<ForumsService, ForumsService>();
+                .AddTransient<ForumsService, ForumsService>()
+                .AddTransient<TopicsService, TopicsService>()
+                .AddTransient<PostsService, PostsService>();
 
             return services;
         }

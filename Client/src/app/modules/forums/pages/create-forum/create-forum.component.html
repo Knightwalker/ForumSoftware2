@@ -1,9 +1,13 @@
 <h1 class="text-center">Create Forum</h1>
 
 <div class="row pt-2 pb-2">
-    <div class="col-0 col-sm-2 col-lg-4"></div>
-    <div class="col-12 col-sm-8 col-lg-4">
+    <div class="col-0 col-sm-2 col-lg-3"></div>
+    <div class="col-12 col-sm-8 col-lg-6">
         <form [formGroup]="forumForm" (ngSubmit)="handleCreate()" class="custom-form">
+            <div class="form-group">
+                <label for="parentId">Parent Id</label>
+                <input formControlName="parentId" id="parentId" class="form-control" type="text" placeholder="Enter parentId">
+            </div>
             <div class="form-group">
                 <label for="type">Type</label>
                 <select formControlName="type" id="type" class="form-control">
@@ -18,10 +22,14 @@
                 <label for="description">Description</label>
                 <textarea formControlName="description" id="description" class="form-control" rows="3" placeholder="Enter description"></textarea>
             </div>
+            <div class="form-group">
+                <label for="imageUrl">Image URL</label>
+                <input formControlName="imageUrl" id="imageUrl" class="form-control" type="text" placeholder="Enter image url">
+            </div>
             <div class="mt-2">
                 <button type="submit" class="btn btn-primary" [disabled]="forumForm.invalid">Create</button>
             </div>
         </form>
     </div>
-    <div class="col-0 col-sm-2 col-lg-4"></div>
+    <div class="col-0 col-sm-2 col-lg-3"></div>
 </div>

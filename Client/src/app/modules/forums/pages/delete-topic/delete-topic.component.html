@@ -1,0 +1,13 @@
+<div class="delete-topic">
+    <h1 class="text-center">Confirm Delete Topic</h1>
+
+    <div class="delete-topic__message">
+        <p *ngIf="status == 'INIT'">Are you sure you want to delete this topic?</p>
+        <p *ngIf="status == 'ERROR'">Sorry, we were unable to delete this topic. You must first move or delete all posts inside this topic.</p>
+    </div>
+
+    <div class="d-flex justify-content-center">
+        <button class="btn btn-secondary" (click)="handleCancelDelete()">Nevermind</button>
+        <button class="btn btn-primary mx-2" (click)="handleDelete()">Yes Please</button>
+    </div>
+</div>

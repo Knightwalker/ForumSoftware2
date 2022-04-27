@@ -1,0 +1,11 @@
+<div className="TopicPage">
+    <div className="container">
+        <div *ngIf="status == 'INIT' || status == 'LOADING'">Loading...</div>
+        <div *ngIf="status == 'ERROR'">
+            {{errorMessage}}
+        </div>
+        <div *ngIf="status == 'SUCCESS'">
+            <app-topic-list [topic]="topic"></app-topic-list>
+        </div>
+    </div>
+</div>

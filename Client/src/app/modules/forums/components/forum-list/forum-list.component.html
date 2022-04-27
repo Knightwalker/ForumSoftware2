@@ -1,0 +1,33 @@
+<div class="forums-list">
+
+    <div class="container-forum">
+        <div class="container-forum__head">{{forum.name}}</div>
+        <div class="container-forum__body">
+
+            <ng-template ngFor let-topic [ngForOf]="forum.topics">
+                <div class="container-topic">
+                    <div class="container-topic__item1">
+                        <img src="https://i.servimg.com/u/f39/13/74/09/43/old10.png" alt=""/>
+                    </div>
+                    <div class="container-topic__item2">
+                        <a [routerLink]="['/topics/read', topic.id]">
+                            <p>{{topic.name}}</p>
+                        </a>
+                        <div class="topic__author">{{topic.description}}</div>
+                    </div>
+                    <div class="container-topic__item3">
+                        <p>{{topic.posts.length}} Replies</p>
+                        <p>{{topic.posts.length}} Views</p>
+                    </div>
+                    <div class="container-topic__item4">Created By: {{topic.user.userName}}</div>
+                </div>
+            </ng-template>
+
+        </div>
+        <div class="container-forum__foot">
+            <a [routerLink]="['/forums/create/new_topic', forum.id]"><img src="/assets/btn_new-topic.png" alt="new-topic"/></a>
+        </div>
+
+    </div>
+
+</div>

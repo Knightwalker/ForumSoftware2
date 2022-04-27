@@ -15,12 +15,17 @@ export class ForumsService {
     }
 
     create(data: Forum): Observable<any> {
-        const endpoint = environment.apiUrl + "/forums/create";
+        const endpoint = environment.apiUrl + "/Forums/Create";
         return this.http.post<any>(endpoint, data);
     }
 
     getAll(): Observable<any> {
-        const endpoint = environment.apiUrl + "/forums/GetAll";
+        const endpoint = environment.apiUrl + "/Forums/GetAll";
+        return this.http.get<any>(endpoint);
+    }
+
+    getById(id: number): Observable<any> {
+        const endpoint = environment.apiUrl + `/Forums/getById/${id}`;
         return this.http.get<any>(endpoint);
     }
 

@@ -1,0 +1,21 @@
+<h1 class="text-center">Create Topic</h1>
+
+<div class="row pt-2 pb-2">
+    <div class="col-0 col-sm-2 col-lg-4"></div>
+    <div class="col-12 col-sm-8 col-lg-4">
+        <form [formGroup]="topicForm" (ngSubmit)="handleCreate()" class="custom-form">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input formControlName="name" id="name" class="form-control" type="text" placeholder="Enter name">
+            </div>
+            <div class="form-group">
+                <label for="description">Description</label>
+                <textarea formControlName="description" id="description" class="form-control" rows="3" placeholder="Enter description"></textarea>
+            </div>
+            <div class="mt-2">
+                <button type="submit" class="btn btn-primary" [disabled]="topicForm.invalid">Create</button>
+            </div>
+        </form>
+    </div>
+    <div class="col-0 col-sm-2 col-lg-4"></div>
+</div>

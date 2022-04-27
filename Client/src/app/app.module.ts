@@ -12,6 +12,7 @@ import { AuthGuardService } from './services/auth-guard/auth-guard.service';
 import { InterceptorService } from './services/interceptor/interceptor.service';
 import { ForumsService } from './modules/forums/services/forums.service';
 import { AuthService } from './modules/users/services/auth.service';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { AuthService } from './modules/users/services/auth.service';
     ReactiveFormsModule,
     AppRoutingModule,
     CoreModule,
-    UsersModule
+    UsersModule,
+    NoopAnimationsModule
   ],
   providers: [
       AuthService,
@@ -33,7 +35,7 @@ import { AuthService } from './modules/users/services/auth.service';
           useClass: InterceptorService,
           multi: true
       },
-      ForumsService
+      ForumsService,
   ],
   bootstrap: [AppComponent]
 })

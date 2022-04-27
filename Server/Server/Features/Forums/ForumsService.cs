@@ -56,6 +56,11 @@ namespace Server.Features.Forums
                             Id= x.Id,
                             Name = x.Name,
                         }).ToList()
+                    }).ToList(),
+                    Topics = x.Topics.Select(t => new Topic
+                    {
+                        Id = t.Id,
+                        Name = t.Name,
                     }).ToList()
                 })
                 .ToListAsync();
@@ -90,8 +95,13 @@ namespace Server.Features.Forums
                     {
                         Id = t.Id,
                         Name = t.Name,
+                        Description = t.Description,
                         UserId = t.UserId,
                         User = t.User,
+                        Posts = t.Posts.Select(p => new Post
+                        {
+                            Id = p.Id
+                        }).ToList()
                     }).ToList(),
                 })
                 .FirstOrDefaultAsync();

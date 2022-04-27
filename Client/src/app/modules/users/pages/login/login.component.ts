@@ -29,6 +29,7 @@ export class LoginComponent implements OnInit {
         this.authService.login(data).subscribe((res) => {
             const token = res;
             this.authService.saveToken(token);
+            window.location.href = "/"; // Workaround
         });
     }
 

@@ -1,0 +1,120 @@
+.forums-list {
+    padding: 20px;
+}
+
+.container-forum {
+    background-color: #fffffb;
+    box-shadow: 5px 5px 10px rgb(0 0 0 / 50%);
+    border-radius: 5px;
+}
+
+.container-forum__head {
+    /* background-color: #0bc4e2; */
+    background-color: #1a1c23;
+    color: #fffffb;
+    font-family: 'Inter-Bold';
+    font-size: 24px;
+    padding: 10px;
+    text-transform: capitalize;
+}
+
+.container-forum__body {
+    padding: 5px 10px 5px 10px;
+}
+
+.container-forum__foot {
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px 10px 10px 10px;
+}
+
+.container-topic {
+    display: flex;
+    background: #f2f2f2;
+    border: 1px solid #EEE !important;
+    border-radius: 3px;
+    margin-bottom: 6px;
+}
+.container-topic__item1 {
+    width: 60px;
+    min-width: 60px;
+}
+.container-topic__item2 {
+    padding: 8px 8px 8px 8px;
+    flex-grow: 1;
+}
+
+.container-topic__item3 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 8px 4px 8px 4px;
+    width: 100px;
+    min-width: 100px;
+}
+
+.container-topic__item4 {
+    padding: 8px 4px 8px 4px;
+    width: 160px;
+    min-width: 160px;
+}
+
+.container-forum {
+    background-color: #fffffb;
+    box-shadow: 5px 5px 10px rgb(0 0 0 / 50%);
+    border-radius: 5px;
+    margin-bottom: 25px;
+}
+
+.container-forum__name {
+    /* background-color: #0bc4e2; */
+    background-color: #1a1c23;
+    color: #fffffb;
+    font-family: 'Inter-Bold';
+    font-size: 24px;
+    padding: 10px;
+    text-transform: capitalize;
+}
+
+.container-forum__body {
+    padding: 10px 10px 5px 10px;
+}
+
+.forum__item3 {
+    padding: 10px 10px 10px 10px;
+    flex-grow: 1;
+}
+
+.forum__item4 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.forum__item5 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.forum__img {
+    background-color: #242a49;
+    border: 5px #242a49;
+    border-radius: 100px;
+    box-shadow: #000 2px 2px 1px;
+    height: 114px;
+    padding: 5px;
+    width: 110px;
+}
+
+.forum__stats-number {
+    text-align: center;
+}
+
+.forum__stats-text {
+    text-align: center;
+}

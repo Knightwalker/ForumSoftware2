@@ -1,0 +1,37 @@
+<div class="forums">
+    <div class="topic">
+      <div class="topic-page__topic-head">{{topic.name}}</div>
+      <div class="topic-page__topic-body">
+
+        <ng-template ngFor let-post [ngForOf]="topic.posts">
+            <div class="topic-page__post">
+                <div class="topic-page__post-row">
+                  <div class="user-container">
+                    <img loading="lazy" src={{post.user.imageUrl}} alt={{post.user.userName}}/>
+                    <div>{{post.user.userName}}</div>
+                  </div>
+                  <div class="post__main">
+                    <div class="post__head">
+                      <div>
+                        <p>{{post.name}}</p>
+                        <p>by {{post.user.userName}} on {{post.createdOnDate}}</p>
+                      </div>
+                    </div>
+                    <div class="post__body">{{post.content}}</div>
+                  </div>
+                </div>
+                <div class="topic-page__post-foot">
+                  <a [routerLink]="['/posts/edit/', post.id]"><img src="/assets/btn_edit.png" alt="edit"/></a>
+                  <a [routerLink]="['/posts/delete/', post.id]"><img src="/assets/btn_delete.png" alt="delete"/></a>
+                </div>
+              </div>
+        </ng-template>
+
+      </div>
+      <div class="topic-page__topic-foot">
+        <button mat-button class="mx-2" [routerLink]="urlForTopicsDelete">Delete Topic</button>
+        <button mat-button [routerLink]="urlForPostsCreate">New Post</button>
+      </div>
+
+    </div>
+</div>
