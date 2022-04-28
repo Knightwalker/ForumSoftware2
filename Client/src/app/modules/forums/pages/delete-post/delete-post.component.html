@@ -3,7 +3,7 @@
 
     <div class="delete-post__message">
         <p *ngIf="status == 'INIT'">Are you sure you want to delete this post?</p>
-        <p *ngIf="status == 'ERROR'">Sorry, we were unable to delete this post.</p>
+        <p *ngIf="status == 'ERROR'">{{this.errorMessage}}</p>
     </div>
 
     <div class="d-flex justify-content-center">

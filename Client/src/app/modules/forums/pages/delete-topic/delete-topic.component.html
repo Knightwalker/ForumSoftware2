@@ -3,7 +3,7 @@
 
     <div class="delete-topic__message">
         <p *ngIf="status == 'INIT'">Are you sure you want to delete this topic?</p>
-        <p *ngIf="status == 'ERROR'">Sorry, we were unable to delete this topic. You must first move or delete all posts inside this topic.</p>
+        <p *ngIf="status == 'ERROR'">{{errorMessage}}</p>
     </div>
 
     <div class="d-flex justify-content-center">

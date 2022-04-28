@@ -8,6 +8,7 @@ import { CreateTopicComponent } from './modules/forums/pages/create-topic/create
 import { DeletePostComponent } from './modules/forums/pages/delete-post/delete-post.component';
 import { DeleteTopicComponent } from './modules/forums/pages/delete-topic/delete-topic.component';
 import { EditPostComponent } from './modules/forums/pages/edit-post/edit-post.component';
+import { EditTopicComponent } from './modules/forums/pages/edit-topic/edit-topic.component';
 import { ViewForumComponent } from './modules/forums/pages/view-forum/view-forum.component';
 import { ViewTopicComponent } from './modules/forums/pages/view-topic/view-topic.component';
 import { LoginComponent } from './modules/users/pages/login/login.component';
@@ -16,10 +17,11 @@ import { ProfileComponent } from './modules/users/pages/profile/profile.componen
 import { RegisterComponent } from './modules/users/pages/register/register.component';
 import { AuthGuardService } from './services/auth-guard/auth-guard.service';
 
-export const genUrlForViewForumComponent = (forum_id: string) => { return `/forums/read/${forum_id}`}
-export const genUrlForViewTopicComponent = (topic_id: string) => { return `/topics/read/${topic_id}`}
-export const genUrlForTopicsDelete = (topic_id: string) => { return `/topics/delete/${topic_id}`}
-export const genUrlForPostsCreate = (topic_id: string) => { return `/topics/create/new_post/${topic_id}`}
+export const genUrlForViewForumComponent = (forum_id: string) => { return `/forums/read/${forum_id}`; }
+export const genUrlForViewTopicComponent = (topic_id: string) => { return `/topics/read/${topic_id}`; }
+export const genUrlForTopicsDelete = (topic_id: string) => { return `/topics/delete/${topic_id}`; }
+export const getUrlForTopicsEdit = (topic_id: string) => { return `/topics/edit/${topic_id}`; }
+export const genUrlForPostsCreate = (topic_id: string) => { return `/topics/create/new_post/${topic_id}`; }
 
 const routes: Routes = [
     {
@@ -66,6 +68,11 @@ const routes: Routes = [
     {
         path: "topics/create/new_post/:topic_id",
         component: CreatePostComponent,
+        canActivate: [AuthGuardService]
+    },
+    {
+        path: "topics/edit/:topic_id",
+        component: EditTopicComponent,
         canActivate: [AuthGuardService]
     },
     {

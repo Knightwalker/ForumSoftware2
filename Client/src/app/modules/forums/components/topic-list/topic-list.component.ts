@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { genUrlForTopicsDelete, genUrlForPostsCreate } from "../../../../app.routing";
+import { genUrlForTopicsDelete, getUrlForTopicsEdit, genUrlForPostsCreate } from "../../../../app.routing";
 
 @Component({
     selector: 'app-topic-list',
@@ -9,6 +9,7 @@ import { genUrlForTopicsDelete, genUrlForPostsCreate } from "../../../../app.rou
 export class TopicListComponent implements OnInit {
     @Input() topic: any;
     public urlForTopicsDelete!: string;
+    public urlForTopicsEdit!: string;
     public urlForPostsCreate!: string;
 
     constructor() {
@@ -17,6 +18,7 @@ export class TopicListComponent implements OnInit {
     ngOnInit(): void {
         console.log("Topic", this.topic);
         this.urlForTopicsDelete = genUrlForTopicsDelete(this.topic.id);
+        this.urlForTopicsEdit = getUrlForTopicsEdit(this.topic.id);
         this.urlForPostsCreate = genUrlForPostsCreate(this.topic.id);
     }
 

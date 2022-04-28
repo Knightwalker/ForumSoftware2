@@ -10,7 +10,8 @@ import { PostsService } from '../../services/posts.service';
   styleUrls: ['./edit-post.component.css']
 })
 export class EditPostComponent implements OnInit {
-    public state: string = "INIT";
+    public status: string = "INIT";
+    public errorMessage: string = "";
     public post: any;
     public postForm: FormGroup;
     private router: Router;
@@ -45,14 +46,21 @@ export class EditPostComponent implements OnInit {
     handleEdit(): void {
         const post_id: number = Number(this.activatedRoute.snapshot.params["post_id"]);
         const data: any = this.postForm.value;
+        this.status = "LOADING";
         this.postsService.updateById(post_id, data).subscribe({
             next: () => {
                 const topic_id: string = this.post.topicId;
                 const endpoint = genUrlForViewTopicComponent(topic_id);
                 this.router.navigateByUrl(endpoint);
+                this.status = "SUCCESS";
             },
             error: (err) => {
-                console.error("BACKEND ERROR", err);
+                if (err.status === 403) {
+                    this.errorMessage = "Sorry, we were unable to update this post. You can only edit posts you authored.";
+                } else if (err.status === 400) {
+                    this.errorMessage = "Sorry, we were unable to delete this topic. Please check with admins.";
+                }
+                this.status = "ERROR";
             }
         })
     }

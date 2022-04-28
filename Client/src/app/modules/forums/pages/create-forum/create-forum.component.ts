@@ -21,7 +21,7 @@ export class CreateForumComponent implements OnInit {
         this.fb = fb;
         this.router = router;
         this.forumForm = this.fb.group({
-            "parentId": ["", [Validators.required]],
+            "parentId": [null],
             "type": [this.forumTypes[0]],
             "name": ["", [Validators.required]],
             "description": ["", [Validators.required]],

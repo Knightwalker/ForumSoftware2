@@ -1,5 +1,5 @@
 export interface Forum {
-    parentId: string;
+    parentId: number;
     type: string;
     name: string;
     description: string;

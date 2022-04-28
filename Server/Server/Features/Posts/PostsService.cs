@@ -93,7 +93,42 @@ namespace Server.Features.Posts
                 Console.WriteLine(ex);
                 return false;
             }
+        }
 
+        public async Task<bool> canUserUpdateThisPost(int postId, string userId)
+        {
+            var post = await this.dbContext.Posts
+                .Where(x => x.Id == postId)
+                .FirstOrDefaultAsync();
+
+            if (post == null)
+            {
+                return false;
+            }
+
+            if (userId != post.UserId)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public async Task<bool> canUserDeleteThisPost(int postId, string userId)
+        {
+            var post = await this.dbContext.Posts
+                .Where(x => x.Id == postId)
+                .FirstOrDefaultAsync();
+
+            if (post == null)
+            {
+                return false;
+            }
+
+            if (userId != post.UserId)
+            {
+                return false;
+            }
+            return true;
         }
 
     }

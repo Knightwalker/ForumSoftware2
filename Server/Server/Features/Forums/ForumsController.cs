@@ -39,9 +39,16 @@ namespace Server.Features.Forums
                 return BadRequest();
             }
 
-            var createdForum = await forumService.Create(model, userId);
+            try
+            {
+                var createdForum = await forumService.Create(model, userId);
+                return Created("Create", createdForum.Id);
+            } catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return BadRequest();
+            }
 
-            return Created("Create", createdForum.Id);
         }
 
         [HttpGet]

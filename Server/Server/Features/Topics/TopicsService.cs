@@ -59,6 +59,25 @@ namespace Server.Features.Topics
             return topic;
         }
 
+        public async Task<Topic> UpdateById(int topicId, CreateTopicModel model, string userId)
+        {
+            var topic = this.dbContext.Topics
+                .Where(x => x.Id == topicId)
+                .FirstOrDefault();
+
+            if (topic == null)
+            {
+                throw new Exception();
+            }
+
+            topic.Name = model.Name;
+            topic.Description = model.Description;
+            topic.ModifiedOnDate = DateTime.Now;
+            await this.dbContext.SaveChangesAsync();
+
+            return topic;
+        }
+
         public async Task<bool> DeleteById(int topicId)
         {
             var topic = await this.dbContext.Topics
@@ -81,6 +100,42 @@ namespace Server.Features.Topics
                 return false;
             }
 
+        }
+
+        public async Task<bool> canUserUpdateThisTopic(int topicId, string userId)
+        {
+            var topic = await this.dbContext.Topics
+                .Where(x => x.Id == topicId)
+                .FirstOrDefaultAsync();
+
+            if (topic == null)
+            {
+                return false;
+            }
+
+            if (userId != topic.UserId)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public async Task<bool> canUserDeleteThisTopic(int topicId, string userId)
+        {
+            var topic = await this.dbContext.Topics
+                .Where(x => x.Id == topicId)
+                .FirstOrDefaultAsync();
+
+            if (topic == null)
+            {
+                return false;
+            }
+
+            if (userId != topic.UserId)
+            {
+                return false;
+            }
+            return true;
         }
 
     }

@@ -17,6 +17,7 @@ import { DeleteTopicComponent } from './pages/delete-topic/delete-topic.componen
 import { DeletePostComponent } from './pages/delete-post/delete-post.component';
 import { MatButtonModule } from "@angular/material/button";
 import { EditPostComponent } from './pages/edit-post/edit-post.component';
+import { EditTopicComponent } from './pages/edit-topic/edit-topic.component';
 
 @NgModule({
     declarations: [
@@ -31,6 +32,7 @@ import { EditPostComponent } from './pages/edit-post/edit-post.component';
         DeleteTopicComponent,
         DeletePostComponent,
         EditPostComponent,
+        EditTopicComponent,
     ],
     imports: [
         CommonModule,

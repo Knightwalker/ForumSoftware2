@@ -10,6 +10,7 @@ import { genUrlForViewForumComponent, genUrlForViewTopicComponent } from "../../
 })
 export class DeleteTopicComponent implements OnInit {
     public status: string = "INIT";
+    public errorMessage: string = "";
     public topic: any;
     private router: Router;
     private activatedRoute: ActivatedRoute;
@@ -44,7 +45,14 @@ export class DeleteTopicComponent implements OnInit {
                 const forum_id = this.topic.forumId;
                 const url = genUrlForViewForumComponent(forum_id);
                 this.router.navigateByUrl(url);
-            }, error: () => {
+            }, error: (err) => {
+                if (err.status === 409) {
+                    this.errorMessage = "Sorry, we were unable to delete this topic. You must first move or delete all posts inside this topic.";
+                } else if (err.status === 403) {
+                    this.errorMessage = "Sorry, we were unable to delete this topic. You can only delete topics you authored.";
+                } else if (err.status === 400) {
+                    this.errorMessage = "Sorry, we were unable to delete this topic. Please check with admins.";
+                }
                 this.status = "ERROR";
             }
         });

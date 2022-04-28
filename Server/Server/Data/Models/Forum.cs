@@ -18,5 +18,7 @@ namespace Server.Data.Models
         public List<Topic> Topics { get; set; }
         public string UserId { get; set; }
         public User User { get; set; }
+        public DateTime CreatedOnDate { get; set; }
+        public DateTime ModifiedOnDate { get; set; }
     }
 }

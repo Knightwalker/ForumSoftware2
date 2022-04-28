@@ -35,6 +35,33 @@ namespace Server.Features.Topics
             return Created("Create", createdTopic.Id);
         }
 
+        [HttpPut]
+        [Route("UpdateById/{topicId}")]
+        public async Task<ActionResult<Post>> UpdateById(int topicId, CreateTopicModel model)
+        {
+            var userId = this.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
+            if (userId == null)
+            {
+                return BadRequest();
+            }
+
+            var userCanUpdateThisTopic = await topicsService.canUserUpdateThisTopic(topicId, userId);
+            if (!userCanUpdateThisTopic)
+            {
+                return this.Forbid();
+            }
+
+            try
+            {
+                var post = await this.topicsService.UpdateById(topicId, model, userId);
+                return this.Ok();
+            }
+            catch
+            {
+                return BadRequest();
+            }
+        }
+
         [HttpGet]
         [Route("GetById/{topicId}")]
         public async Task<ActionResult<Topic>> GetById(int topicId)
@@ -51,14 +78,27 @@ namespace Server.Features.Topics
         }
 
         [Route("DeleteById/{topicId}")]
+        [Authorize]
         [HttpDelete]
         public async Task<ActionResult> DeleteById(int topicId)
         {
-            var deleted = await this.topicsService.DeleteById(topicId);
+            var userId = this.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
 
+            if (userId == null)
+            {
+                return BadRequest();
+            }
+
+            var userCanDeleteThisTopic = await topicsService.canUserDeleteThisTopic(topicId, userId);
+            if (!userCanDeleteThisTopic)
+            {
+                return this.Forbid();
+            }
+
+            var deleted = await this.topicsService.DeleteById(topicId);
             if (!deleted)
             {
-                return this.BadRequest();
+                return this.Conflict();
             }
             return this.Ok();
         }

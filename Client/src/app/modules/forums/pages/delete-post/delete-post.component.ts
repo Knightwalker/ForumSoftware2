@@ -10,6 +10,7 @@ import { PostsService } from '../../services/posts.service';
 })
 export class DeletePostComponent implements OnInit {
     public status: string = "INIT";
+    public errorMessage: string = "";
     public post: any;
     private router: Router;
     private activatedRoute: ActivatedRoute;
@@ -48,7 +49,12 @@ export class DeletePostComponent implements OnInit {
                 const topic_id = this.post.topicId;
                 const url = genUrlForViewTopicComponent(topic_id);
                 this.router.navigateByUrl(url);
-            }, error: () => {
+            }, error: (err) => {
+                if (err.status === 403) {
+                    this.errorMessage = "Sorry, we were unable to delete this post. You can only delete post you authored.";
+                } else if (err.status === 400) {
+                    this.errorMessage = "Sorry, we were unable to delete this post. Please check with admins.";
+                }
                 this.status = "ERROR";
             }
         });

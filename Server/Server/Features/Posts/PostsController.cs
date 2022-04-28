@@ -55,10 +55,15 @@ namespace Server.Features.Posts
         public async Task<ActionResult<Post>> UpdateById(int postId, CreatePostModel model)
         {
             var userId = this.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
-
             if (userId == null)
             {
                 return BadRequest();
+            }
+
+            var userCanUpdateThisPost = await postsService.canUserUpdateThisPost(postId, userId);
+            if (!userCanUpdateThisPost)
+            {
+                return this.Forbid();
             }
 
             try
@@ -68,7 +73,7 @@ namespace Server.Features.Posts
             }
             catch
             {
-                return this.NotFound();
+                return BadRequest();
             }
         }
 
@@ -76,8 +81,19 @@ namespace Server.Features.Posts
         [HttpDelete]
         public async Task<ActionResult> DeleteById(int postId)
         {
-            var deleted = await this.postsService.DeleteById(postId);
+            var userId = this.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
+            if (userId == null)
+            {
+                return BadRequest();
+            }
 
+            var userCanDeleteThisPost = await postsService.canUserDeleteThisPost(postId, userId);
+            if (!userCanDeleteThisPost)
+            {
+                return this.Forbid();
+            }
+
+            var deleted = await this.postsService.DeleteById(postId);
             if (!deleted)
             {
                 return this.BadRequest();
