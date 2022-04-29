@@ -131,9 +131,16 @@ namespace Server.Features.Forums
             forum.Description = model.Description;
             forum.ImageUrl = model.ImageUrl;
 
-            await this.dbContext.SaveChangesAsync();
+            try
+            {
+                await this.dbContext.SaveChangesAsync();
+                return true;
+            } catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                return false;
+            }
 
-            return true;
         }
 
         public async Task<bool> DeleteById(int forumId)
@@ -147,9 +154,52 @@ namespace Server.Features.Forums
                 return false;
             }
 
-            this.dbContext.Forums.Remove(forum);
-            await this.dbContext.SaveChangesAsync();
+            try
+            {
+                this.dbContext.Forums.Remove(forum);
+                await this.dbContext.SaveChangesAsync();
+                return true;
+            } catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                return false;
+            }
 
+        }
+
+        public async Task<bool> canUserUpdateThisForum(int forumId, string userId)
+        {
+            var forum = await this.dbContext.Forums
+                .Where(x => x.Id == forumId)
+                .FirstOrDefaultAsync();
+
+            if (forum == null)
+            {
+                return false;
+            }
+
+            if (userId != forum.UserId)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public async Task<bool> canUserDeleteThisForum(int forumId, string userId)
+        {
+            var forum = await this.dbContext.Forums
+                .Where(x => x.Id == forumId)
+                .FirstOrDefaultAsync();
+
+            if (forum == null)
+            {
+                return false;
+            }
+
+            if (userId != forum.UserId)
+            {
+                return false;
+            }
             return true;
         }
 

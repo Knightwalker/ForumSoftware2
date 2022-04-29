@@ -10,19 +10,19 @@ namespace Server.Features.Forums
     public class ForumsController : ApiController
     {
         private readonly ApplicationDbContext dbContext;
-        private readonly ForumsService forumService;
+        private readonly ForumsService forumsService;
 
-        public ForumsController(ApplicationDbContext dbContext, ForumsService forumService)
+        public ForumsController(ApplicationDbContext dbContext, ForumsService forumsService)
         {
             this.dbContext = dbContext;
-            this.forumService = forumService;
+            this.forumsService = forumsService;
         }
 
         [HttpGet]
         [Route("GetAll")]
         public async Task<ActionResult<List<Forum>>> GetAll()
         {
-            var forums = await this.forumService.GetAll();
+            var forums = await this.forumsService.GetAll();
 
             return this.Ok(forums);
         }
@@ -41,7 +41,7 @@ namespace Server.Features.Forums
 
             try
             {
-                var createdForum = await forumService.Create(model, userId);
+                var createdForum = await forumsService.Create(model, userId);
                 return Created("Create", createdForum.Id);
             } catch (Exception ex)
             {
@@ -57,7 +57,7 @@ namespace Server.Features.Forums
         {
             try
             {
-                var forum = await this.forumService.GetById(forumId);
+                var forum = await this.forumsService.GetById(forumId);
                 return this.Ok(forum);
             } catch
             {
@@ -69,8 +69,19 @@ namespace Server.Features.Forums
         [HttpPut]
         public async Task<ActionResult> UpdateById(int forumId, UpdateForumModel model)
         {
-            var updated = await this.forumService.UpdateById(forumId, model);
+            var userId = this.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
+            if (userId == null)
+            {
+                return BadRequest();
+            }
 
+            var userCanUpdateThisForum = await forumsService.canUserUpdateThisForum(forumId, userId);
+            if (!userCanUpdateThisForum)
+            {
+                return this.Forbid();
+            }
+
+            var updated = await this.forumsService.UpdateById(forumId, model);
             if (!updated)
             {
                 return this.BadRequest();
@@ -82,11 +93,22 @@ namespace Server.Features.Forums
         [HttpDelete]
         public async Task<ActionResult> DeleteById(int forumId)
         {
-            var deleted = await this.forumService.DeleteById(forumId);
+            var userId = this.User.Claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
+            if (userId == null)
+            {
+                return BadRequest();
+            }
 
+            var userCanDeleteThisForum = await forumsService.canUserDeleteThisForum(forumId, userId);
+            if (!userCanDeleteThisForum)
+            {
+                return this.Forbid();
+            }
+
+            var deleted = await this.forumsService.DeleteById(forumId);
             if (!deleted)
             {
-                return this.BadRequest();
+                return this.Conflict();
             }
             return this.Ok();
         }

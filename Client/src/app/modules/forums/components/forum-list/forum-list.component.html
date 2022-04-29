@@ -25,7 +25,9 @@
 
         </div>
         <div class="container-forum__foot">
-            <a [routerLink]="['/forums/create/new_topic', forum.id]"><img src="/assets/btn_new-topic.png" alt="new-topic"/></a>
+            <button mat-button [routerLink]="urlForForumsDelete">Delete Forum</button>
+            <button mat-button [routerLink]="urlForForumsEdit">Edit Forum</button>
+            <button mat-button [routerLink]="urlForTopicsCreate">New Topic</button>
         </div>
 
     </div>

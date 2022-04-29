@@ -24,6 +24,7 @@ export class ViewForumComponent implements OnInit {
         this.forumsService.getById(forum_id).subscribe({
             next: (val) => {
                 this.forum = val;
+                console.log("Forum", val);
                 this.status = "SUCCESS";
             },
             error: (err) => {

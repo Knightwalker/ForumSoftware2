@@ -1,0 +1,17 @@
+.delete-forum {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-width: 400px;
+    min-height: 250px;
+    padding: 20px;
+}
+
+.delete-forum__message {
+    min-height: 100px;
+    margin: 20px 0px 20px 0px;
+    padding: 20px;
+    border: 2px solid black;
+    border-radius: 4px;
+    text-align: center;
+}

@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { genUrlForForumsDelete, getUrlForForumsEdit, getUrlForTopicsCreate } from "../../../../app.routing";
 
 @Component({
     selector: 'app-forum-list',
@@ -7,11 +8,16 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class ForumListComponent implements OnInit {
     @Input() forum: any;
+    public urlForTopicsCreate!: string;
+    public urlForForumsDelete!: string;
+    public urlForForumsEdit!: string;
 
     constructor() { }
 
     ngOnInit(): void {
-        console.log(this.forum);
+        this.urlForForumsDelete = genUrlForForumsDelete(this.forum.id);
+        this.urlForForumsEdit = getUrlForForumsEdit(this.forum.id);
+        this.urlForTopicsCreate = getUrlForTopicsCreate(this.forum.id);
     }
 
 }

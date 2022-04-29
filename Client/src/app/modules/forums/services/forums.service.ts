@@ -29,4 +29,14 @@ export class ForumsService {
         return this.http.get<any>(endpoint);
     }
 
+    updateById(forum_id: number, data: any): Observable<any> {
+        const endpoint = environment.apiUrl + `/Forums/updateById/${forum_id}`;
+        return this.http.put<any>(endpoint, data);
+    }
+
+    deleteById(forum_id: number): Observable<any> {
+        const endpoint = environment.apiUrl + `/Forums/deleteById/${forum_id}`;
+        return this.http.delete<any>(endpoint);
+    }
+
 }

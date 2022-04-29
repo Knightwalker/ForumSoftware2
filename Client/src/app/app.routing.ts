@@ -5,8 +5,10 @@ import { NotFoundComponent } from './core/pages/not-found/not-found.component';
 import { CreateForumComponent } from './modules/forums/pages/create-forum/create-forum.component';
 import { CreatePostComponent } from './modules/forums/pages/create-post/create-post.component';
 import { CreateTopicComponent } from './modules/forums/pages/create-topic/create-topic.component';
+import { DeleteForumComponent } from './modules/forums/pages/delete-forum/delete-forum.component';
 import { DeletePostComponent } from './modules/forums/pages/delete-post/delete-post.component';
 import { DeleteTopicComponent } from './modules/forums/pages/delete-topic/delete-topic.component';
+import { EditForumComponent } from './modules/forums/pages/edit-forum/edit-forum.component';
 import { EditPostComponent } from './modules/forums/pages/edit-post/edit-post.component';
 import { EditTopicComponent } from './modules/forums/pages/edit-topic/edit-topic.component';
 import { ViewForumComponent } from './modules/forums/pages/view-forum/view-forum.component';
@@ -19,9 +21,13 @@ import { AuthGuardService } from './services/auth-guard/auth-guard.service';
 
 export const genUrlForViewForumComponent = (forum_id: string) => { return `/forums/read/${forum_id}`; }
 export const genUrlForViewTopicComponent = (topic_id: string) => { return `/topics/read/${topic_id}`; }
-export const genUrlForTopicsDelete = (topic_id: string) => { return `/topics/delete/${topic_id}`; }
+export const genUrlForForumsDelete = (forum_id: string) => { return `/forums/delete/${forum_id}`; }
+export const getUrlForForumsEdit = (forum_id: string) => { return `/forums/edit/${forum_id}`; }
+export const getUrlForTopicsCreate = (forum_id: string) => { return `/forums/create/new_topic/${forum_id}`; }
 export const getUrlForTopicsEdit = (topic_id: string) => { return `/topics/edit/${topic_id}`; }
+export const genUrlForTopicsDelete = (topic_id: string) => { return `/topics/delete/${topic_id}`; }
 export const genUrlForPostsCreate = (topic_id: string) => { return `/topics/create/new_post/${topic_id}`; }
+
 
 const routes: Routes = [
     {
@@ -56,8 +62,18 @@ const routes: Routes = [
         canActivate: [AuthGuardService]
     },
     {
+        path: "forums/edit/:forum_id",
+        component: EditForumComponent,
+        canActivate: [AuthGuardService]
+    },
+    {
         path: "forums/create/new_topic/:forum_id",
         component: CreateTopicComponent,
+        canActivate: [AuthGuardService]
+    },
+    {
+        path: "forums/delete/:forum_id",
+        component: DeleteForumComponent,
         canActivate: [AuthGuardService]
     },
     {

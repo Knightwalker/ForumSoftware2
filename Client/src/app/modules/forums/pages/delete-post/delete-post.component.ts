@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { genUrlForViewForumComponent, genUrlForViewTopicComponent } from "../../../../app.routing";
+import { genUrlForViewTopicComponent } from "../../../../app.routing";
 import { PostsService } from '../../services/posts.service';
 
 @Component({
