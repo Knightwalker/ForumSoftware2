@@ -1,32 +1,39 @@
-<ng-template ngFor let-user [ngForOf]="users">
-    <div>user</div>
-</ng-template>
+<div class="users__container">
+<mat-form-field>
+    <input matInput type="text" (keyup)="applyFilter($event)" placeholder="Filter" />
+</mat-form-field>
 
-<mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-    <!-- Position Column -->
-    <ng-container matColumnDef="position">
-      <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.position}} </mat-cell>
+<mat-table [dataSource]="table.dataSource" class="mat-elevation-z8">
+    <ng-container matColumnDef="imageUrl">
+        <mat-header-cell *matHeaderCellDef> Avatar </mat-header-cell>
+        <mat-cell *matCellDef="let element">  
+            <img class="userImageCss" loading="lazy" src={{element.imageUrl}} alt="God">
+        </mat-cell>
     </ng-container>
-  
-    <!-- Name Column -->
-    <ng-container matColumnDef="name">
-      <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+    
+    <ng-container matColumnDef="userName">
+        <mat-header-cell *matHeaderCellDef> User Name </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.userName}} </mat-cell>
     </ng-container>
-  
-    <!-- Weight Column -->
-    <ng-container matColumnDef="weight">
-      <mat-header-cell *matHeaderCellDef> Weight </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.weight}} </mat-cell>
+
+    <ng-container matColumnDef="email">
+        <mat-header-cell *matHeaderCellDef> Email </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.email}} </mat-cell>
     </ng-container>
-  
-    <!-- Symbol Column -->
-    <ng-container matColumnDef="symbol">
-      <mat-header-cell *matHeaderCellDef> Symbol </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.symbol}} </mat-cell>
+
+    <ng-container matColumnDef="createdOnDate">
+        <mat-header-cell *matHeaderCellDef> Joined on Date </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.createdOnDate}} </mat-cell>
     </ng-container>
-  
-    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-  </mat-table>
+
+    <ng-container matColumnDef="lastVisitDate">
+        <mat-header-cell *matHeaderCellDef> Last visit </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.lastVisitDate}} </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="table.displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: table.displayedColumns;"></mat-row>
+</mat-table>
+
+<mat-paginator [pageSizeOptions]="[5, 10, 15]" showFirstLastButtons></mat-paginator>
+</div>

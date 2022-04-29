@@ -1,3 +1,16 @@
 table {
     width: 100%;
 }
+
+.userImageCss {
+    max-width: 60px; 
+    max-height: 100px
+}
+
+:host ::ng-deep.mat-paginator .mat-paginator-container{
+    justify-content: center;
+}
+
+.users__container {
+    padding: 20px;
+}

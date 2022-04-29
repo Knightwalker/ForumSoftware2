@@ -36,7 +36,9 @@ namespace Server.Features.Identity
             {
                 Email = model.Email,
                 UserName = model.UserName,
-                ImageUrl = "https://2img.net/u/1614/38/46/76/avatars/7-15.jpg" // Default user workaround
+                ImageUrl = "https://2img.net/u/1614/38/46/76/avatars/7-15.jpg", // Default user workaround
+                CreatedOnDate = DateTime.Now,
+                LastVisitDate = DateTime.Now
             };
             try
             {
