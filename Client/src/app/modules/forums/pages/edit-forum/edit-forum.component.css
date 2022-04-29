@@ -6,3 +6,17 @@
     background: darkred;
     color: white;
 }
+
+:host {
+    display: flex;
+    flex-direction: column;
+    background-image: url(https://static0.gamerantimages.com/wordpress/wp-content/uploads/2022/03/Arthas.jpg);
+    background-size: cover;
+    min-height: 400px;
+    justify-content: space-evenly;
+    padding-bottom: 40px;
+}
+
+form {
+    background-color: #f2f2f2;
+}
