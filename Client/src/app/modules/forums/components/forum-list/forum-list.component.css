@@ -13,6 +13,9 @@
     font-size: 24px;
     padding: 10px;
     text-transform: capitalize;
+    background-color: #094275;
+    border: 2px solid black;
+    color: white;
 }
 
 .container-forum__body {

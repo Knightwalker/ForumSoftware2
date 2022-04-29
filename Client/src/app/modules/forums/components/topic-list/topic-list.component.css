@@ -11,6 +11,9 @@
     font-size: 24px;
     padding: 10px;
     text-transform: capitalize;
+    background-color: #094275;
+    border: 2px solid black;
+    color: white;
 }
 
 .topic-page__topic-body {
@@ -52,6 +55,7 @@
     width: 200px;
     text-align: center;
     min-height: 200px;
+    padding-top: 10px;
 }
 
 .post__main {

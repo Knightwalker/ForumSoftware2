@@ -4,7 +4,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { genUrlForViewForumComponent } from "../../../../app.routing";
 import { TopicsService } from '../../services/topics.service';
 
-
 @Component({
     selector: 'app-edit-topic',
     templateUrl: './edit-topic.component.html',

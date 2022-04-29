@@ -15,6 +15,7 @@
             <div *ngIf="isLoginFormInvalid()" class="alert alert-danger mt-2 mb-2">
                 <p *ngFor="let error of genLoginFormErrorsArr()">{{error}}</p>
             </div>
+            <div *ngIf="status === 'ERROR'" class="login__error-box">{{errorMessage}}</div>
             <div class="mt-2">
                 <button type="submit" class="btn btn-primary" [disabled]="loginForm.invalid">Login</button>
             </div>

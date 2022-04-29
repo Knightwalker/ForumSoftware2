@@ -18,6 +18,9 @@ export class LayoutComponent implements OnInit {
 
     ngOnInit(): void {
         this.isLoggedIn = this.authService.isAuthenticated();
+        const decodedToken = this.authService.getDecodedToken();
+        console.log(decodedToken);
+        this.username = decodedToken.name;
     }
 
 }

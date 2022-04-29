@@ -17,6 +17,7 @@ import { LoginComponent } from './modules/users/pages/login/login.component';
 import { LogoutComponent } from './modules/users/pages/logout/logout.component';
 import { ProfileComponent } from './modules/users/pages/profile/profile.component';
 import { RegisterComponent } from './modules/users/pages/register/register.component';
+import { UsersComponent } from './modules/users/pages/users/users.component';
 import { AuthGuardService } from './services/auth-guard/auth-guard.service';
 
 export const genUrlForViewForumComponent = (forum_id: string) => { return `/forums/read/${forum_id}`; }
@@ -27,7 +28,6 @@ export const getUrlForTopicsCreate = (forum_id: string) => { return `/forums/cre
 export const getUrlForTopicsEdit = (topic_id: string) => { return `/topics/edit/${topic_id}`; }
 export const genUrlForTopicsDelete = (topic_id: string) => { return `/topics/delete/${topic_id}`; }
 export const genUrlForPostsCreate = (topic_id: string) => { return `/topics/create/new_post/${topic_id}`; }
-
 
 const routes: Routes = [
     {
@@ -49,7 +49,12 @@ const routes: Routes = [
     },
     {
         path: "profile",
-        component: ProfileComponent
+        component: ProfileComponent,
+        canActivate: [AuthGuardService]
+    },
+    {
+        path: "users",
+        component: UsersComponent,
     },
     {
         path: "forums/create",
@@ -58,8 +63,7 @@ const routes: Routes = [
     },
     {
         path: "forums/read/:forum_id",
-        component: ViewForumComponent,
-        canActivate: [AuthGuardService]
+        component: ViewForumComponent
     },
     {
         path: "forums/edit/:forum_id",
@@ -78,8 +82,7 @@ const routes: Routes = [
     },
     {
         path: "topics/read/:topic_id",
-        component: ViewTopicComponent,
-        canActivate: [AuthGuardService]
+        component: ViewTopicComponent
     },
     {
         path: "topics/create/new_post/:topic_id",

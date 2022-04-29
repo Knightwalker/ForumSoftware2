@@ -1,1 +1,52 @@
-<p>profile works!</p>
+<div class="UserPage">
+    <div class="container d-flex">
+
+        <div class="UserNavbar">
+            <ul>
+                <li><a routerLink="/profile">Account Overview</a></li>
+                <li><a routerLink="/logout">Logout</a></li>
+            </ul>
+        </div>
+
+        <div class="UserPanel">
+            <div class="user-panel_head">Account Overview</div>
+            <div class="user-panel_body">
+                <div class="AccountOverview">
+                    <div class="user-container">
+                        <img class="user-container__avatar" loading="lazy" src={{user.imageUrl}}
+                            alt={{user.username}} />
+                    </div>
+                    <div class="user-content">
+                        <div>Username: {{user.userName}}</div>
+                        <div>Email: {{user.email}}</div>
+                        <div>Avatar: {{user.imageUrl}}</div>
+                        <br />
+                        <form id="profile__form">
+                            <fieldset>
+                                <legend>Modify:</legend>
+                                <div class="d-flex justify-space-between">
+                                    <label for="password" class="profile-label">Change Username:</label>
+                                    <input #usernameEl type="password" id="password" name="password" />
+                                    <button type="button" (click)="handleChangeUserName(usernameEl)">update</button>
+                                </div>
+                                <br />
+                                <div class="d-flex justify-space-between">
+                                    <label for="email" class="profile-label">Change Email:</label>
+                                    <input #emailEl type="text" id="email" name="email" />
+                                    <button type="button" (click)="handleChangeEmail(emailEl)">change</button>
+                                </div>
+                                <br />
+                                <div class="d-flex justify-space-between">
+                                    <label for="avatar" class="profile-label">Change Avatar:</label>
+                                    <input #avatarEl type="text" id="avatar" name="avatar" />
+                                    <button type="button" (click)="handleChangeAvatar(avatarEl)">upload</button>
+                                </div>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

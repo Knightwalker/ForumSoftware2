@@ -49,8 +49,33 @@ export class AuthService {
 
     getDecodedToken() {
         const token: string = localStorage.getItem("token") ?? "";
-        const decoded = jwtDecode<JwtPayload>(token); // Returns with the JwtPayload type
+        const decoded = jwtDecode<any>(token); // Returns with the JwtPayload type
         return decoded
+    }
+
+    getById(user_id: number): Observable<any> {
+        const endpoint = environment.apiUrl + `/Identity/getById/${user_id}`;
+        return this.http.get<any>(endpoint);
+    }
+
+    getAllUsers(): Observable<any> {
+        const endpoint = environment.apiUrl + `/Identity/getAllUsers`;
+        return this.http.get<any>(endpoint);
+    }
+
+    updateEmailById(user_id: string, data: any): Observable<any> {
+        const endpoint = environment.apiUrl + `/Identity/updateEmailById/${user_id}`;
+        return this.http.put<any>(endpoint, data);
+    }
+
+    updateAvatarById(user_id: string, data: any): Observable<any> {
+        const endpoint = environment.apiUrl + `/Identity/updateAvatarById/${user_id}`;
+        return this.http.put<any>(endpoint, data);
+    }
+
+    updateUserNameById(user_id: string, data: any): Observable<any> {
+        const endpoint = environment.apiUrl + `/Identity/updateUserNameById/${user_id}`;
+        return this.http.put<any>(endpoint, data);
     }
 
 }

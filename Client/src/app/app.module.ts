@@ -1,3 +1,4 @@
+// Modules
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
@@ -6,8 +7,10 @@ import { AppRoutingModule } from './app.routing';
 import { CoreModule } from './core/core.module';
 import { UsersModule } from './modules/users/users.module';
 
+// Components
 import { AppComponent } from './app.component';
 
+// Services
 import { AuthGuardService } from './services/auth-guard/auth-guard.service';
 import { InterceptorService } from './services/interceptor/interceptor.service';
 import { ForumsService } from './modules/forums/services/forums.service';

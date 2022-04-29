@@ -8,6 +8,8 @@ import { AuthService } from '../../services/auth.service';
     styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+    public status: string = "INIT";
+    public errorMessage: string = "";
     public loginForm: FormGroup;
     private fb: FormBuilder;
     private authService: AuthService;
@@ -26,10 +28,21 @@ export class LoginComponent implements OnInit {
 
     handleLogin() {
         const data = this.loginForm.value;
-        this.authService.login(data).subscribe((res) => {
-            const token = res;
-            this.authService.saveToken(token);
-            window.location.href = "/"; // Workaround
+        this.status = "LOADING";
+        this.authService.login(data).subscribe({
+            next: (val) => {
+                this.status = "SUCCESS";
+                const token = val;
+                this.authService.saveToken(token);
+                window.location.href = "/"; // Workaround
+            }, error: (err) => {
+                if (err.status === 401) {
+                    this.errorMessage = "Sorry, we were unable to authenticate this user. Please provide a matching username and password combination";
+                } else {
+                    this.errorMessage = "Sorry, we were unable to establish internet connection.";
+                }
+                this.status = "ERROR";
+            }
         });
     }
 

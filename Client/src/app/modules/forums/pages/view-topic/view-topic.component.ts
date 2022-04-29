@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Subscription, tap } from 'rxjs';
 import { TopicsService } from '../../services/topics.service';
 
 @Component({
@@ -7,12 +8,13 @@ import { TopicsService } from '../../services/topics.service';
     templateUrl: './view-topic.component.html',
     styleUrls: ['./view-topic.component.css']
 })
-export class ViewTopicComponent implements OnInit {
+export class ViewTopicComponent implements OnInit, OnDestroy {
     public status: string = "INIT";
     public errorMessage: string = "";
     public topic: any;
     private topicsService: TopicsService;
     private activatedRoute: ActivatedRoute;
+    private subscription!: Subscription;
 
     constructor(topicsService: TopicsService, activatedRoute: ActivatedRoute) { 
         this.topicsService = topicsService;
@@ -21,7 +23,13 @@ export class ViewTopicComponent implements OnInit {
 
     ngOnInit(): void {
         const topic_id: number = this.activatedRoute.snapshot.params["topic_id"];
-        this.topicsService.getById(topic_id).subscribe({
+        this.subscription = this.topicsService.getById(topic_id)
+        .pipe(
+            tap(() => {
+                this.status = "LOADING";
+            })
+        )
+        .subscribe({
             next: (val) => {
                 let posts = this.transformPosts(val.posts);
                 let topic = val;
@@ -34,6 +42,10 @@ export class ViewTopicComponent implements OnInit {
                 this.status = "ERROR";
             }
         });
+    }
+
+    ngOnDestroy(): void {
+        this.subscription.unsubscribe();
     }
 
     transformPosts(postsArr: any[]) {
