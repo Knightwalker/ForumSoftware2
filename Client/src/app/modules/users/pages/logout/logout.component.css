@@ -1,3 +1,19 @@
 .login {
     padding: 20px;
 }
+
+:host {
+    display: flex;
+    flex-direction: column;
+    background-image: url(https://static0.gamerantimages.com/wordpress/wp-content/uploads/2022/03/Arthas.jpg);
+    background-size: cover;
+    min-height: 400px;
+    justify-content: space-evenly;
+    padding-bottom: 40px;
+}
+
+.logout-container {
+    background-color: #f2f2f2;
+    width: 80%;
+    margin: auto;
+}

@@ -20,3 +20,13 @@
     border-radius: 4px;
     text-align: center;
 }
+
+:host {
+    display: flex;
+    flex-direction: column;
+    background-image: url(https://static0.gamerantimages.com/wordpress/wp-content/uploads/2022/03/Arthas.jpg);
+    background-size: cover;
+    min-height: 400px;
+    justify-content: space-evenly;
+    padding-bottom: 40px;
+}
