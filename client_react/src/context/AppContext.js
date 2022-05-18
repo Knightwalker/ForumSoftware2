@@ -23,6 +23,15 @@ const AppContextProvider = (props) => {
         const componendDidMount = async () => {
             handleUpdateContainerStatus("LOADING");
             try {
+                // debugger;
+                // const result = await fetch("http://localhost:8000/sanctum/csrf-cookie", {
+                //     withCredentials: true
+                // });
+                // debugger;
+                // const data = await result.blob();
+                // console.log("maikatideba")
+                // debugger;
+
                 // TODO: call auth service
                 setUser((oldState) => {
                     const newState = JSON.parse(JSON.stringify(oldState));
