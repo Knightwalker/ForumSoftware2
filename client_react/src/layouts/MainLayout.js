@@ -1,41 +1,45 @@
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AppContext } from "../context/AppContext";
+import "./MainLayout.css";
 
 const MainLayout = (props) => {
+    const { appState, user } = useContext(AppContext);
+
+    // console.log(appState);
 
     return (
         <div className="MainLayout">
             <header>
                 <nav className="navbar">
                     <div className="navbar__left">
-                        <Link to="/">
-                            <div className="nav__logo2">
-                                Logo
-                            </div>
-                        </Link>
+                        <Link to="/"><div className="nav__logo2"></div></Link>
                     </div>
                     <div className="navbar__mid">
-                        <ul className="nav__list-horizontal">
+                        <ul className="nav__list">
                             <li><Link to="/users"><div className="nav__item">User</div></Link></li>
                             <li><Link to="/groups"><div className="nav__item">Groups</div></Link></li>
                             <li><Link to="/forums/create"><div className="nav__item">Create Forum</div></Link></li>
                         </ul>
                     </div>
                     <div className="navbar__right">
-                        <ul className="nav__list-horizontal">
-                            {/* <ng-template [ngIf]="!isLoggedIn">
-                <li><a routerLink="/login"><div className="nav__item">Login</div></a></li>
-                <li><a routerLink="/register"><div className="nav__item">Register</div></a></li>
-            </ng-template>
-            <ng-template [ngIf]="isLoggedIn">
-                <li><a routerLink="/profile"><div className="nav__logo">Welcome, {{username}}</div></a></li>
-                <li><a routerLink="/logout"><div className="nav__logo">Logout</div></a></li>
-            </ng-template> */}
+                        <ul className="nav__list">
+                            {!user.isLoggedIn && (
+                                <>
+                                    <li><Link to="/login"><div className="nav__item">Login</div></Link></li>
+                                    <li><Link to="/register"><div className="nav__item">Register</div></Link></li>
+                                </>
+                            )}
+                            {user.isLoggedIn && (
+                                <>
+                                    <li><Link to="/profile"><div className="nav__item">Welcome, {user.username}</div></Link></li>
+                                    <li><Link to="/logout"><div className="nav__item">Logout</div></Link></li>
+                                </>
+                            )}
                         </ul>
                     </div>
                 </nav>
-                <div className="hero">
-                    s
-                </div>
+                <div className="hero"></div>
             </header>
             <div className="container flex-grow-1 py-4">
                 <main>
