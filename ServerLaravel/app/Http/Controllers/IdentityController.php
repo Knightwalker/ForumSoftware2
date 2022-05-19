@@ -17,26 +17,29 @@ class IdentityController extends Controller
     * @return \Illuminate\Http\Response  
     */
     public function register(Request $request) {
-        $request->headers->set('Accept', 'application/json');
+        $request->headers->set("Accept", "application/json");
         $data = $request->all(); // Get the request input data as an array.
         
         // Step 1. Validate
         $validator = Validator::make($data, [
                 "username" => "required|max:255|unique:users,username",
-                "email" => "required|email|max:255|unique:users,email",
-                "password" => "required|max:255"
+                "email"    => "required|email|max:255|unique:users,email",
+                "password" => "required|max:255|confirmed", // requires the payload to have `password_confirmation` field. The magic happens by design
             ]
         );
 
         if ($validator->fails()) {
             return response()->json([
-                'status' => 'error',
-                'msg'    => 'Error',
-                'errors' => $validator->errors(),
+                "status"     => "error",
+                "statusCode" => 422,
+                "message"    => "Validation failed",
+                "errors"     => $validator->errors(),
+                "errorsArr"  => $validator->errors()->all()
             ], 422);
         }
 
-        // Step 2. Insert default values
+        // Step 2. Transform data
+        $data["password"] = Hash::make($data["password"]);
         $data["image_url"] = $data["image_url"] ?? "https://2img.net/u/1614/38/46/76/avatars/100-26.jpg";
  
         // Step 3. Register
@@ -48,13 +51,19 @@ class IdentityController extends Controller
  
         try {
             $user->save();
-            return response($user, 201);
+            return response()->json([
+                "status"     => "success",
+                "statusCode" => 201,
+                "message"    => "Registered successfully",
+                "data"       => $user
+            ], 201);
         } catch (\Exception $ex) {
             return response()->json([
-                'status' => 'error',
-                'msg'    => $ex->getMessage(),
-                'errors' => []
-            ], 422);
+                "status"  => "error",
+                "statusCode" => 500,
+                "message" => $ex->getMessage(),
+                "errorsArr"  => ["General server error"]
+            ], 500);
         }
 
     }
@@ -66,7 +75,7 @@ class IdentityController extends Controller
     * @return \Illuminate\Http\Response  
     */
     public function login(Request $request) {
-        $request->headers->set('Accept', 'application/json');
+        $request->headers->set("Accept", "application/json");
         
         // Step 1. Validate
         $validator = Validator::make($request->all(), [
@@ -77,9 +86,11 @@ class IdentityController extends Controller
 
         if ($validator->fails()) {
             return response()->json([
-                'status' => 'error',
-                'msg'    => 'Error',
-                'errors' => $validator->errors(),
+                "status" => "error",
+                "statusCode" => 422,
+                "message"    => "Validation Failed",
+                "errors" => $validator->errors(),
+                "errorsArr" => $validator->errors()->all()
             ], 422);
         }
  
@@ -87,16 +98,18 @@ class IdentityController extends Controller
         $user = User::where("username", $request["username"])->first();
         if (!$user) {
             return response()->json([
-                'status' => 'error',
-                'msg'    => 'User does not exist'
+                "status"  => "error",
+                "statusCode" => 401,
+                "message" => "User does not exist"
             ], 401);
         }
 
         // Step 3. Check Password
         if (!Hash::check($request["password"], $user->password)) {
             return response()->json([
-                'status' => 'error',
-                'msg'    => 'Password does not match'
+                "status" => "error",
+                "statusCode" => 401,
+                "message"=> "Password does not match"
             ], 401);
         }
 
@@ -104,6 +117,7 @@ class IdentityController extends Controller
         $token = $user->createToken("myapptoken")->plainTextToken;
 
         return response()->json([
+            "status" => "success",
             "user"  => $user,
             "token" => $token
         ], 201);
@@ -119,8 +133,8 @@ class IdentityController extends Controller
         auth()->user()->tokens()->delete(); 
 
         return response()->json([
-            'status' => 'success',
-            'msg'    => 'Logged Out'
+            "status" => "success",
+            "msg"    => "Logged Out"
         ], 200);
     }
 

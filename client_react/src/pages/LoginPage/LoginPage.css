@@ -1,0 +1,18 @@
+.LoginPage {
+    background-image: url("../../assets/Arthas.jpg");
+    background-size: cover;
+    padding: 20px;
+}
+
+.LoginPage__errors-container {
+    position: relative;
+    width: 500px;
+    margin: auto;
+    background-color: #360e10;
+    box-shadow: 0px 0px 0px 1px #551e21 inset, 0 5px 10px rgba(0, 0, 0, 0.75);
+    color: #ffffffb3;
+    border: 1px solid #000;
+    margin-bottom: 15px;
+    padding: 10px 20px 10px 50px;
+    font-family: 'Inter-Regular';
+}

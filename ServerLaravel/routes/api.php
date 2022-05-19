@@ -17,6 +17,8 @@ use App\Http\Controllers\ProductController;
 */
 
 // Public Routes
+Route::post("/identity/register", [IdentityController::class, "register"]);
+Route::post("/identity/login", [IdentityController::class, "login"]);
 
 Route::post("/products/create", [ProductController::class, "create"]);
 Route::get("/products/getById/{id}", [ProductController::class, "getById"]);
@@ -24,13 +26,9 @@ Route::put("/products/updateById/{id}", [ProductController::class, "updateById"]
 Route::delete("/products/deleteById/{id}", [ProductController::class, "deleteById"]);
 Route::get("/products/searchByName/{name}", [ProductController::class, "searchByName"]);
 
-
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-
-Route::post("/identity/register", [IdentityController::class, "register"]);
-Route::post("/identity/login", [IdentityController::class, "login"]);
 
 // Protected Routes
 Route::group(["middleware" => ["auth:sanctum"]], function() {

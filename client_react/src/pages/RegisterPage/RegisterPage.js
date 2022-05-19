@@ -20,7 +20,7 @@ const RegisterPage = () => {
         const formData = document.forms["RegisterPage__form"].elements;
         const username = formData["username"].value;
         const password = formData["password"].value;
-        const passwordRe = formData["passwordRe"].value;
+        const password_confirmation = formData["password_confirmation"].value;
         const email = formData["email"].value;
         const verify_age = formData["verify_age"].checked;
         const verify_tos = formData["verify_tos"].checked;
@@ -28,27 +28,19 @@ const RegisterPage = () => {
         const payload = {
             username: username,
             password: password,
-            passwordRe: passwordRe,
+            password_confirmation: password_confirmation,
             email: email,
             verify_age: verify_age,
             verify_tos: verify_tos
         };
 
         try {
-            const result = await makeRequest(payload);
-            debugger;
-            if (result.status === "failed") {
-                setHasErrors(true);
-                setArrErrors(result.arrErrors);
-                return;
-            }
-
-            setHasErrors(false);
-            setArrErrors([]);
-            hookNavigate.push("/");
-
+            await makeRequest(payload);
+            hookNavigate("/");
         } catch (error) {
-            console.log(error);
+            setArrErrors(error.errors);
+            debugger;
+            setHasErrors(true);
         }
 
     }
@@ -71,14 +63,15 @@ const RegisterPage = () => {
 
     return (
         <div className="RegisterPage">
-
             <div className="register__h1">Create Your Account</div>
 
-            {(hasErrors) ? (<div className="login__errors-container">
-                {arrErrors.map((error, i) =>
-                    <div key={i}>{error.message}</div>
-                )}
-            </div>) : (null)}
+            {(hasErrors) && (
+                <div className="RegisterPage__errors-container">
+                    {arrErrors.map((error, i) =>
+                        <div key={i}>{error}</div>
+                    )}
+                </div>
+            )}
 
             <div className="register__container">
                 <form id="RegisterPage__form" autoComplete="off" onSubmit={handleSubmit}>
@@ -112,7 +105,7 @@ const RegisterPage = () => {
                             <img src={PaperImg} alt="shield"></img>
                         </div>
                         <label className="register__grid_label">Confirm Password</label>
-                        <input className="register__grid_input" type="password" name="passwordRe"
+                        <input className="register__grid_input" type="password" name="password_confirmation"
                             onFocus={fOnFocusInFocusOutVisuals.bind(this, "passwordre", "focusin")}
                             onBlur={fOnFocusInFocusOutVisuals.bind(this, "passwordre", "focusout")}
                         />
