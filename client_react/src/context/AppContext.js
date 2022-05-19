@@ -8,7 +8,8 @@ const AppContextProvider = (props) => {
     });
     const [user, setUser] = useState({
         isLoggedIn: false,
-        username: "BOB"
+        username: "",
+        token: null
     });
 
     const handleUpdateContainerStatus = (status) => {
@@ -49,7 +50,8 @@ const AppContextProvider = (props) => {
     return (
         <AppContext.Provider value={{
             appState: state,
-            user: user
+            user: user,
+            setUser: setUser
         }}>
             {props.children}
         </AppContext.Provider>

@@ -7,6 +7,7 @@ import './App.css';
 import HomePage from "./pages/HomePage/HomePage";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import LoginPage from "./pages/LoginPage/LoginPage";
+import LogoutPage from "./pages/LogoutPage/LogoutPage";
 
 function App() {
     return (
@@ -15,8 +16,9 @@ function App() {
                 <MainLayout>
                     <Routes>
                         <Route path="/" element={<HomePage/>} />
-                        <Route path="/register" element={<RegisterPage/>} />
-                        <Route path="/login" element={<LoginPage/>} />
+                        <Route path="/identity/register" element={<RegisterPage/>} />
+                        <Route path="/identity/login" element={<LoginPage/>} />
+                        <Route path="/identity/logout" element={<LogoutPage/>} />
                         <Route path="*" element={<div>NOT FOUND PAGE</div>} />
                     </Routes>
                 </MainLayout>

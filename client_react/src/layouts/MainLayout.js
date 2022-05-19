@@ -26,14 +26,14 @@ const MainLayout = (props) => {
                         <ul className="nav__list">
                             {!user.isLoggedIn && (
                                 <>
-                                    <li><Link to="/login"><div className="nav__item">Login</div></Link></li>
-                                    <li><Link to="/register"><div className="nav__item">Register</div></Link></li>
+                                    <li><Link to="/identity/login"><div className="nav__item">Login</div></Link></li>
+                                    <li><Link to="/identity/register"><div className="nav__item">Register</div></Link></li>
                                 </>
                             )}
                             {user.isLoggedIn && (
                                 <>
                                     <li><Link to="/profile"><div className="nav__item">Welcome, {user.username}</div></Link></li>
-                                    <li><Link to="/logout"><div className="nav__item">Logout</div></Link></li>
+                                    <li><Link to="/identity/logout"><div className="nav__item">Logout</div></Link></li>
                                 </>
                             )}
                         </ul>

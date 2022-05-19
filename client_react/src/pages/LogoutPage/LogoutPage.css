@@ -1,0 +1,29 @@
+.LogoutPage {
+    background-image: url("../../assets/Arthas.jpg");
+    background-size: cover;
+    padding: 20px;
+    min-height: 400px;
+}
+
+.LogoutPage__h1 {
+    padding-bottom: 20px;
+    font-family: "Inter-Bold";
+    font-size: 32px;
+    text-align: center;
+    color: #c4b998;
+    text-shadow: 4px 2px 2px rgb(0 0 0 / 80%);
+}
+
+.LogoutPage__container {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    width: 500px;
+    margin: auto;
+    /* background: rgb(0 0 0); */
+    /* box-shadow: 0 0 3px 1px #212d28; */
+}
+
+.LogoutPage__btn {
+    min-width: 200px;
+}

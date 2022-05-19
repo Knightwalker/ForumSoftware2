@@ -1,57 +1,50 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { AppContext } from "../../context/AppContext";
+import UsernameImg from "../../assets/auth/username.png";
+import ShieldImg from "../../assets/auth/shield.png";
 import "./LoginPage.css";
+
+// Services, Hooks
+import { useLogin } from "../../services";
 
 const LoginPage = () => {
     const hookNavigate = useNavigate();
+    const { setUser } = useContext(AppContext);
+    const [makeRequest] = useLogin();
 
     const [hasErrors, setHasErrors] = useState(false);
     const [arrErrors, setArrErrors] = useState([]);
 
-    const fOnSubmit = async (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        const formData = document.forms["register__form"].elements;
+        debugger;
+        const formData = document.forms["LoginPage__form"].elements;
         const username = formData["username"].value;
         const password = formData["password"].value;
 
-        const data = {
+        const payload = {
             username: username,
             password: password,
-        }
+        };
 
-        var result = null;
         try {
-            const response = await fetch("http://localhost:5000/api/auth/login", {
-                method: "POST",
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(data)
+            const data = await makeRequest(payload);
+            setUser((oldData) => {
+                const newData = JSON.parse(JSON.stringify(oldData));
+                newData.isLoggedIn = true;
+                newData.username = data.user.username;
+                newData.token = data.token;
+                return newData;
             });
-            result = await response.json();
-
-            if (result.status === "failed") {
-                setHasErrors(true);
-                setArrErrors(result.arrErrors);
-                return;
-            }
-
-            setHasErrors(false);
-            setArrErrors([]);
-
+            debugger;
+            hookNavigate("/");
         } catch (error) {
-            console.log(error);
+            setArrErrors(error.errors);
+            debugger;
+            setHasErrors(true);
         }
 
-        // Verify Token
-        // var token = null;
-        // try {
-        //     token = jwt.verify(result.token, "keyboard cats");
-        // } catch (error) {
-        //     console.log(error);
-        // }
-
-        hookNavigate.push("/");
     }
 
     const fOnFocusInFocusOutVisuals = (field, mode, e) => {
@@ -72,20 +65,20 @@ const LoginPage = () => {
 
     return (
         <div className="LoginPage">
-            <div className="register__h1">Log Inside Your Account</div>
+            <h1 className="LoginPage__h1">Welcome Back Hero!</h1>
 
             {(hasErrors) && (
                 <div className="LoginPage__errors-container">
                     {arrErrors.map((error, i) =>
-                        <div key={i}>{error.message}</div>
+                        <div key={i}>{error}</div>
                     )}
                 </div>
             )}
 
-            <div className="register__container">
-                <form id="register__form" autoComplete="off" onSubmit={fOnSubmit}>
+            <div className="LoginPage__container">
+                <form id="LoginPage__form" autoComplete="off" onSubmit={handleSubmit}>
                     <div className="register__grid">
-                        <div className="register__grid_icon"><img src="/assets/auth/username.png" alt=""></img></div>
+                        <div className="register__grid_icon"><img src={UsernameImg} alt="username"></img></div>
                         <label className="register__grid_label">Username</label>
                         <input className="register__grid_input" type="text" name="username"
                             onFocus={fOnFocusInFocusOutVisuals.bind(this, "username", "focusin")}
@@ -95,7 +88,7 @@ const LoginPage = () => {
                     </div>
 
                     <div className="register__grid">
-                        <div className="register__grid_icon"><img src="/assets/auth/shield.png" alt="shield"></img></div>
+                        <div className="register__grid_icon"><img src={ShieldImg} alt="password"></img></div>
                         <label className="register__grid_label">Password</label>
                         <input className="register__grid_input" type="password" name="password"
                             onFocus={fOnFocusInFocusOutVisuals.bind(this, "password", "focusin")}

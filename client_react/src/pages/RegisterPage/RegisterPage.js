@@ -63,7 +63,7 @@ const RegisterPage = () => {
 
     return (
         <div className="RegisterPage">
-            <div className="register__h1">Create Your Account</div>
+            <h1 className="RegisterPage__h1">Create New Account</h1>
 
             {(hasErrors) && (
                 <div className="RegisterPage__errors-container">
@@ -73,12 +73,12 @@ const RegisterPage = () => {
                 </div>
             )}
 
-            <div className="register__container">
+            <div className="RegisterPage__container">
                 <form id="RegisterPage__form" autoComplete="off" onSubmit={handleSubmit}>
 
                     <div className="register__grid">
                         <div className="register__grid_icon">
-                            <img src={UsernameImg} alt=""></img>
+                            <img src={UsernameImg} alt="username"></img>
                         </div>
                         <label className="register__grid_label">Username</label>
                         <input className="register__grid_input" type="text" name="username"
@@ -90,7 +90,7 @@ const RegisterPage = () => {
 
                     <div className="register__grid">
                         <div className="register__grid_icon">
-                            <img src={ShieldImg} alt="shield"></img>
+                            <img src={ShieldImg} alt="password"></img>
                         </div>
                         <label className="register__grid_label">Password</label>
                         <input className="register__grid_input" type="password" name="password"
@@ -102,7 +102,7 @@ const RegisterPage = () => {
 
                     <div className="register__grid">
                         <div className="register__grid_icon">
-                            <img src={PaperImg} alt="shield"></img>
+                            <img src={PaperImg} alt="password"></img>
                         </div>
                         <label className="register__grid_label">Confirm Password</label>
                         <input className="register__grid_input" type="password" name="password_confirmation"
@@ -114,7 +114,7 @@ const RegisterPage = () => {
 
                     <div className="register__grid">
                         <div className="register__grid_icon">
-                            <img src={PaperImg} alt="post"></img>
+                            <img src={PaperImg} alt="email"></img>
                         </div>
                         <label className="register__grid_label">Email</label>
                         <input className="register__grid_input" type="text" name="email"
@@ -142,7 +142,7 @@ const RegisterPage = () => {
 
                     <div>
                         <p>Already have an account?</p>
-                        <p className="register__block"><Link to="/auth/login">Login</Link> or <Link to="/">Reset Password</Link></p>
+                        <p className="register__block"><Link to="/identity/login">Login</Link> or <Link to="/">Reset Password</Link></p>
                     </div>
 
                 </form>

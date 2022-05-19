@@ -100,7 +100,8 @@ class IdentityController extends Controller
             return response()->json([
                 "status"  => "error",
                 "statusCode" => 401,
-                "message" => "User does not exist"
+                "message" => "User does not exist",
+                "errorsArr" => ["User does not exist"]
             ], 401);
         }
 
@@ -109,7 +110,8 @@ class IdentityController extends Controller
             return response()->json([
                 "status" => "error",
                 "statusCode" => 401,
-                "message"=> "Password does not match"
+                "message"=> "Password does not match",
+                "errorsArr" => ["Password does not match"]
             ], 401);
         }
 
@@ -120,7 +122,7 @@ class IdentityController extends Controller
             "status" => "success",
             "user"  => $user,
             "token" => $token
-        ], 201);
+        ], 200);
     }
 
     /**
