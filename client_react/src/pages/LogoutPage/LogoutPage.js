@@ -3,17 +3,27 @@ import { useNavigate } from "react-router-dom";
 import { AppContext } from "../../context/AppContext";
 import "./LogoutPage.css";
 
+// Services, Hooks
+import { useLogout } from "../../services/identityService";
+
 const LogoutPage = () => {
     const hookNavigate = useNavigate();
     const { setUser } = useContext(AppContext);
+    const [makeRequest] = useLogout();
 
-    const handleLogout = () => {
-        setUser({
-            isLoggedIn: false,
-            username: "",
-            token: null
-        });
-        hookNavigate("/");
+    const handleLogout = async () => {
+        try {
+            const response = await makeRequest();
+            console.log(response);
+            setUser({
+                isLoggedIn: false,
+                username: "",
+                token: null
+            });
+            hookNavigate("/");
+        } catch (error) {
+            console.log(error);
+        }
     };
 
     const handleNevermind = () => {

@@ -26,10 +26,6 @@ Route::put("/products/updateById/{id}", [ProductController::class, "updateById"]
 Route::delete("/products/deleteById/{id}", [ProductController::class, "deleteById"]);
 Route::get("/products/searchByName/{name}", [ProductController::class, "searchByName"]);
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
-
 // Protected Routes
 Route::group(["middleware" => ["auth:sanctum"]], function() {
     Route::post("/identity/logout", [IdentityController::class, "logout"]);

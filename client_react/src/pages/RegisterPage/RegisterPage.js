@@ -6,7 +6,7 @@ import ShieldImg from "../../assets/auth/shield.png";
 import PaperImg from "../../assets/auth/paper.png";
 
 // Services, Hooks
-import { useRegister } from "../../services";
+import { useRegister } from "../../services/identityService";
 
 const RegisterPage = () => {
     const [hasErrors, setHasErrors] = useState(false);

@@ -120,6 +120,7 @@ class IdentityController extends Controller
 
         return response()->json([
             "status" => "success",
+            "message" => "Logged In",
             "user"  => $user,
             "token" => $token
         ], 200);
@@ -132,11 +133,13 @@ class IdentityController extends Controller
     * @return \Illuminate\Http\Response  
     */
     public function logout(Request $request) {
+        // $request->headers->set("Accept", "application/json");
         auth()->user()->tokens()->delete(); 
-
+        
         return response()->json([
-            "status" => "success",
-            "msg"    => "Logged Out"
+            "status"     => "success",
+            "statusCode" => 200,
+            "message"    => "Logged Out"
         ], 200);
     }
 
