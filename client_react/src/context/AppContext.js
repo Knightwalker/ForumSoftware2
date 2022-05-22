@@ -9,6 +9,7 @@ const AppContextProvider = (props) => {
     const [user, setUser] = useState({
         isLoggedIn: false,
         username: "",
+        role: -1,
         token: null
     });
 
@@ -24,16 +25,7 @@ const AppContextProvider = (props) => {
         const componendDidMount = async () => {
             handleUpdateContainerStatus("LOADING");
             try {
-                // debugger;
-                // const result = await fetch("http://localhost:8000/sanctum/csrf-cookie", {
-                //     withCredentials: true
-                // });
-                // debugger;
-                // const data = await result.blob();
-                // console.log("maikatideba")
-                // debugger;
-
-                // TODO: call auth service
+                // TODO: Check local storage for token.
                 setUser((oldState) => {
                     const newState = JSON.parse(JSON.stringify(oldState));
                     newState.isLoggedIn = false;

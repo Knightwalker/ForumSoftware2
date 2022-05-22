@@ -41,13 +41,15 @@ class IdentityController extends Controller
         // Step 2. Transform data
         $data["password"] = Hash::make($data["password"]);
         $data["image_url"] = $data["image_url"] ?? "https://2img.net/u/1614/38/46/76/avatars/100-26.jpg";
- 
+        $data["role"] = 0; // 0=user, 1=admin
+
         // Step 3. Register
         $user = new User;
         $user->username = $data["username"];
         $user->email = $data["email"];
         $user->password = $data["password"];
         $user->image_url = $data["image_url"];
+        $user->role = $data["role"];
  
         try {
             $user->save();

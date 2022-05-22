@@ -18,7 +18,6 @@ const LoginPage = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        debugger;
         const formData = document.forms["LoginPage__form"].elements;
         const username = formData["username"].value;
         const password = formData["password"].value;
@@ -30,18 +29,18 @@ const LoginPage = () => {
 
         try {
             const data = await makeRequest(payload);
+            console.log(data);
             setUser((oldData) => {
                 const newData = JSON.parse(JSON.stringify(oldData));
                 newData.isLoggedIn = true;
                 newData.username = data.user.username;
+                newData.role = data.user.role;
                 newData.token = data.token;
                 return newData;
             });
-            debugger;
             hookNavigate("/");
         } catch (error) {
             setArrErrors(error.errors);
-            debugger;
             setHasErrors(true);
         }
 

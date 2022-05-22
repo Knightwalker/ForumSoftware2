@@ -4,9 +4,7 @@ import { AppContext } from "../context/AppContext";
 import "./MainLayout.css";
 
 const MainLayout = (props) => {
-    const { appState, user } = useContext(AppContext);
-
-    // console.log(appState);
+    const { user } = useContext(AppContext);
 
     return (
         <div className="MainLayout">
@@ -19,7 +17,7 @@ const MainLayout = (props) => {
                         <ul className="nav__list">
                             <li><Link to="/users"><div className="nav__item">User</div></Link></li>
                             <li><Link to="/groups"><div className="nav__item">Groups</div></Link></li>
-                            <li><Link to="/forums/create"><div className="nav__item">Create Forum</div></Link></li>
+                            <li><Link to="/forum/create"><div className="nav__item">Create Forum</div></Link></li>
                         </ul>
                     </div>
                     <div className="navbar__right">
@@ -53,7 +51,7 @@ const MainLayout = (props) => {
                         <h5 className="text-uppercase">Forum Software</h5>
 
                         <p>
-                            This Forum is a free Angular powered flat-forum bulletin board software solution that can be used to
+                            This Forum is a free React powered flat-forum bulletin board software solution that can be used to
                             stay in touch with a group of people or can power your entire website.
                         </p>
                     </div>
