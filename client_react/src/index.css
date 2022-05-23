@@ -20,3 +20,7 @@ body {
     background: url("./assets/top.jpg") center -200px no-repeat, url("./assets/repeat.jpg") center -200px repeat-y;
     background-color: #012750;
 }
+
+p {
+    margin-bottom: 0px;
+}

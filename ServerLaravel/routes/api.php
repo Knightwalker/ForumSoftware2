@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\IdentityController;
 use App\Http\Controllers\ForumController;
+use App\Http\Controllers\TopicController;
 use App\Http\Controllers\ProductController;
 
 /*
@@ -32,7 +33,7 @@ Route::get("/products/searchByName/{name}", [ProductController::class, "searchBy
 Route::group(["middleware" => ["auth:sanctum"]], function() {
     Route::post("/identity/logout", [IdentityController::class, "logout"]);
     Route::post("/forums/create", [ForumController::class, "create"]);
-    
+    Route::post("/topics/create", [TopicController::class, "create"]);
 
     Route::get("/products", [ProductController::class, "index"]);
 });

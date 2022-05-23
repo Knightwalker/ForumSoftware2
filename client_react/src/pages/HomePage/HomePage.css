@@ -2,3 +2,73 @@
     background-color: #ece8e1;
     min-height: 400px;
 }
+
+.container-parent {
+    background-color: #fffffb;
+    box-shadow: 5px 5px 10px rgb(0 0 0 / 50%);
+    border-radius: 5px;
+    margin-bottom: 25px;
+}
+
+.container-parent__name {
+    background-color: #1a1c23;
+    color: #9d9a8c;
+    font-family: 'Inter-Bold';
+    font-size: 24px;
+    padding: 10px;
+    text-transform: capitalize;
+    background-color: #094275;
+    border: 2px solid black;
+    color: white;
+}
+
+.container-parent__body {
+    padding: 10px 10px 5px 10px;
+}
+
+.container-child {
+    display: flex;
+    background: #F2F2F2;
+    border: 1px solid #EEE !important;
+    border-radius: 3px;
+    margin-bottom: 10px;
+}
+
+.forum__item3 {
+    padding: 10px 10px 10px 10px;
+    flex-grow: 1;
+}
+
+.forum__item4 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.forum__item5 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.forum__img {
+    background-color: #242a49;
+    border: 5px #242a49;
+    border-radius: 100px;
+    box-shadow: #000 2px 2px 1px;
+    height: 114px;
+    padding: 5px;
+    width: 110px;
+}
+
+.forum__stats-number {
+    text-align: center;
+}
+
+.forum__stats-text {
+    text-align: center;
+}

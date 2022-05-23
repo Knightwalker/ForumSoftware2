@@ -68,7 +68,7 @@ const CreateForumPage = () => {
             }
             return false;
         })();
-     
+
         setState((oldState) => {
             const newState = JSON.parse(JSON.stringify(oldState));
             newState.form.isInvalid = isInvalid;
@@ -92,7 +92,7 @@ const CreateForumPage = () => {
                     <form id="CreateForumPage__form" onSubmit={handleSubmit} className="custom-form">
                         <div className="form-group">
                             <label htmlFor="parent_id">Parent Id</label>
-                            <input name="parent_id" id="parent_id" className="form-control" type="number" placeholder="Enter ParentId or leave empty for root level" value={state.form.data.parent_id} onChange={handleChange}/>
+                            <input name="parent_id" id="parent_id" className="form-control" type="number" placeholder="Enter ParentId or leave empty for root level" value={state.form.data.parent_id} onChange={handleChange} />
                         </div>
                         <div className="form-group">
                             <label htmlFor="type">Type</label>
@@ -117,7 +117,7 @@ const CreateForumPage = () => {
                             <button type="submit" className="btn btn-primary" disabled={state.form.isInvalid}>Create</button>
                         </div>
                     </form >
-                </div >
+                </div>
                 <div className="col-0 col-sm-2 col-lg-3"></div>
             </div >
         </div>

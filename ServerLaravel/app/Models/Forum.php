@@ -17,4 +17,13 @@ class Forum extends Model
         "user_id",
         "image_url"
     ];
+
+    public function children() {
+        return $this->hasMany(Forum::class, "parent_id", "id");
+    }
+
+    public function topics() {
+        return $this->hasMany(Topic::class, "forum_id", "id");
+    }
+
 }

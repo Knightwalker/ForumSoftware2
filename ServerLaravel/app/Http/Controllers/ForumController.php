@@ -12,7 +12,11 @@ class ForumController extends Controller
     public function getall(Request $request) {
         $request->headers->set('Accept', 'application/json');
 
-        $forumsArr = Forum::where("parent_id", "=", null)->get();
+        $forumsArr = Forum::where("parent_id", "=", null)
+            ->with(["children"])
+            ->with(["topics"])
+            ->get();
+
         return response()->json([
             "status"     => "success",
             "statusCode" => 200,

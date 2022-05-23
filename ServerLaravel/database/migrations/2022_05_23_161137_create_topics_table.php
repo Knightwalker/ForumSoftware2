@@ -13,16 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('forums', function (Blueprint $table) {
+        Schema::create('topics', function (Blueprint $table) {
             $table->id();
-            $table->integer("parent_id")->nullable();
-            $table->string("type");
             $table->string("name");
             $table->string("description");
+            $table->integer("forum_id");
             $table->integer("user_id");
-            $table->string("image_url");
 
-            $table->foreign("parent_id")->references("id")->on("children")->onDelete("restrict");
             $table->timestamps();
         });
     }
@@ -34,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('forums');
+        Schema::dropIfExists('topics');
     }
 };
