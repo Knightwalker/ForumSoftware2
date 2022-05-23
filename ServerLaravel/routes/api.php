@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\IdentityController;
+use App\Http\Controllers\ForumController;
 use App\Http\Controllers\ProductController;
 
 /*
@@ -19,6 +20,7 @@ use App\Http\Controllers\ProductController;
 // Public Routes
 Route::post("/identity/register", [IdentityController::class, "register"]);
 Route::post("/identity/login", [IdentityController::class, "login"]);
+Route::get("/forums/getall", [ForumController::class, "getall"]);
 
 Route::post("/products/create", [ProductController::class, "create"]);
 Route::get("/products/getById/{id}", [ProductController::class, "getById"]);
@@ -29,6 +31,8 @@ Route::get("/products/searchByName/{name}", [ProductController::class, "searchBy
 // Protected Routes
 Route::group(["middleware" => ["auth:sanctum"]], function() {
     Route::post("/identity/logout", [IdentityController::class, "logout"]);
+    Route::post("/forums/create", [ForumController::class, "create"]);
     
+
     Route::get("/products", [ProductController::class, "index"]);
 });

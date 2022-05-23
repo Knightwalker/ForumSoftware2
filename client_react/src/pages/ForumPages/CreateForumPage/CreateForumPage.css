@@ -1,0 +1,10 @@
+.CreateForumPage {
+    background-color: #ece8e1;
+    padding: 20px;
+}
+
+#CreateForumPage__form {
+    border: 2px solid black;
+    border-radius: 4px;
+    padding: 10px;
+}

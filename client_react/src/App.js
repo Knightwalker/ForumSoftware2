@@ -8,6 +8,7 @@ import HomePage from "./pages/HomePage/HomePage";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import LogoutPage from "./pages/LogoutPage/LogoutPage";
+import CreateForumPage from "./pages/ForumPages/CreateForumPage/CreateForumPage";
 import Protected from "./routes/Protected";
 import Error403Page from "./pages/ErrorPages/Error403Page";
 
@@ -26,7 +27,7 @@ function App() {
                         <Route path="/identity/logout" element={<LogoutPage />} />
                         <Route path="/forum/create" element={
                             <Protected authorizedFor={ENUM_USER_ROLES.ADMIN}>
-                                <div>Forum Create</div>
+                                <CreateForumPage />
                             </Protected>
                         } />
                         <Route path="/error/403" element={<Error403Page />} />
