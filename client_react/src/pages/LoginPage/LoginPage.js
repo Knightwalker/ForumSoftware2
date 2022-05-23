@@ -6,7 +6,7 @@ import ShieldImg from "../../assets/auth/shield.png";
 import "./LoginPage.css";
 
 // Services, Hooks
-import { useLogin } from "../../services/identityService";
+import { useLogin } from "../../services/IdentityService";
 
 const LoginPage = () => {
     const hookNavigate = useNavigate();

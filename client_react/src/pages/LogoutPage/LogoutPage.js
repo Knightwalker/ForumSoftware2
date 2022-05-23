@@ -4,7 +4,7 @@ import { AppContext } from "../../context/AppContext";
 import "./LogoutPage.css";
 
 // Services, Hooks
-import { useLogout } from "../../services/identityService";
+import { useLogout } from "../../services/IdentityService";
 
 const LogoutPage = () => {
     const hookNavigate = useNavigate();
