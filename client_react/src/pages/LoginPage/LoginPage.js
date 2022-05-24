@@ -38,6 +38,11 @@ const LoginPage = () => {
                 newData.token = data.token;
                 return newData;
             });
+            localStorage.setItem("LARAVEL_STORE", JSON.stringify({
+                username: data.user.username,
+                role: data.user.role,
+                token: data.token
+            }));
             hookNavigate("/");
         } catch (error) {
             setArrErrors(error.errors);

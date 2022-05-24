@@ -20,6 +20,7 @@ const LogoutPage = () => {
                 username: "",
                 token: null
             });
+            localStorage.removeItem("LARAVEL_STORE");
             hookNavigate("/");
         } catch (error) {
             console.log(error);

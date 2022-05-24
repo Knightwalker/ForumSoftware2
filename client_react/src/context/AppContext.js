@@ -25,12 +25,25 @@ const AppContextProvider = (props) => {
         const componendDidMount = async () => {
             handleUpdateContainerStatus("LOADING");
             try {
+                let store = localStorage.getItem('LARAVEL_STORE');
+                if (store === null) {
+                    setUser((oldState) => {
+                        const newState = JSON.parse(JSON.stringify(oldState));
+                        newState.isLoggedIn = false;
+                        return newState;
+                    });
+                } else {
+                    store = JSON.parse(store);
+                    setUser((oldData) => {
+                        const newData = JSON.parse(JSON.stringify(oldData));
+                        newData.isLoggedIn = true;
+                        newData.username = store.username;
+                        newData.role = store.role;
+                        newData.token = store.token;
+                        return newData;
+                    });
+                }
                 // TODO: Check local storage for token.
-                setUser((oldState) => {
-                    const newState = JSON.parse(JSON.stringify(oldState));
-                    newState.isLoggedIn = false;
-                    return newState;
-                });
                 handleUpdateContainerStatus("SUCCESS");
             } catch (err) {
                 handleUpdateContainerStatus("ERROR");
