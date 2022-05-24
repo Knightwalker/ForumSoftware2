@@ -34,6 +34,7 @@ class TopicController extends Controller
      
         // Step 2. Transform data
         $data["user_id"] = $user_id;
+        $data["forum_id"] = intval($data["forum_id"]);
 
         $topic = new Topic;
         $topic->name = $data["name"];

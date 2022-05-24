@@ -26,4 +26,8 @@ class Forum extends Model
         return $this->hasMany(Topic::class, "forum_id", "id");
     }
 
+    public function user() {
+        return $this->hasOne(User::class, "id", "user_id");
+    }
+
 }

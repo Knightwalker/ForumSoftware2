@@ -70,4 +70,28 @@ class ForumController extends Controller
         ], 201);
 
     }
+
+    /**
+    * Gets one forum with topics by id.
+    *
+    * @param \Illuminate\Http\Request $request 
+    * @param int $id
+    */
+    public function getById(Request $request, $id) {
+        $request->headers->set('Accept', 'application/json');  
+        $id = intval($id);  
+
+        $forum = Forum::where("id", "=", $id)
+            ->with(["topics"])
+            ->with(["user"])
+            ->first();
+
+        return response()->json([
+            "status"     => "success",
+            "statusCode" => 200,
+            "message"    => "success",
+            "data"       => $forum
+        ], 200);
+    }
+
 }

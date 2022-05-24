@@ -15,8 +15,10 @@ import Error403Page from "./pages/ErrorPages/Error403Page";
 // Enums
 import { ENUM_USER_ROLES } from "./enums";
 import ViewForumPage from "./pages/ForumPages/ViewForumPage/ViewForumPage";
+import CreateTopicPage from "./pages/forum/CreateTopicPage/CreateTopicPage";
 
 function App() {
+
     return (
         <div className="App">
             <Router>
@@ -26,12 +28,13 @@ function App() {
                         <Route path="/identity/register" element={<RegisterPage />} />
                         <Route path="/identity/login" element={<LoginPage />} />
                         <Route path="/identity/logout" element={<LogoutPage />} />
+                        <Route path="/forums/read/:forum_id" element={<ViewForumPage />} />
                         <Route path="/forum/create" element={
                             <Protected authorizedFor={ENUM_USER_ROLES.ADMIN}>
                                 <CreateForumPage />
                             </Protected>
                         } />
-                        <Route path="/forums/read/:id" element={<ViewForumPage />} />
+                        <Route path="/forums/create/new_topic/:forum_id" element={<CreateTopicPage />} />
                         <Route path="/error/403" element={<Error403Page />} />
                         <Route path="*" element={<div>NOT FOUND PAGE</div>} />
                     </Routes>
