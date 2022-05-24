@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
-import { urlCreateNewTopic } from "../../../routes/endpoints";
 import "./ViewForumPage.css";
+import { 
+    urlEditForum, 
+    urlCreateNewTopic 
+} from "../../../routes/endpoints";
 
 // Services, Hooks
 import { useGetById } from "../../../services/ForumService";
@@ -35,10 +38,15 @@ const ViewForumPage = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
-    const handleOpenCreateNewTopic = () => {
-        const url = urlCreateNewTopic(forum_id);
+    const handleOpenPage_EditForumPage = () => {
+        const url = urlEditForum(forum_id);
         hookNavigate(url);
     }
+
+    const handleOpenPage_CreateTopicPage = () => {
+        const url = urlCreateNewTopic(forum_id);
+        hookNavigate(url);
+    };
 
     return (
         <div className="ViewForumPage">
@@ -71,9 +79,9 @@ const ViewForumPage = () => {
 
                     </div>
                     <div className="container-forum__foot">
-                        <button type="button">Delete Forum</button>
-                        <button type="button">Edit Forum</button>
-                        <button type="button" onClick={handleOpenCreateNewTopic}>New Topic</button>
+                        <button type="button" className="btn btn-outline-dark">Delete Forum</button>
+                        <button type="button" className="btn btn-outline-dark ms-1" onClick={handleOpenPage_EditForumPage}>Edit Forum</button>
+                        <button type="button" className="btn btn-outline-dark ms-1" onClick={handleOpenPage_CreateTopicPage}>New Topic</button>
                     </div>
 
                 </div>

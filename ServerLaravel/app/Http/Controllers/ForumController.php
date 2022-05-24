@@ -94,4 +94,39 @@ class ForumController extends Controller
         ], 200);
     }
 
+    /**
+    * Update the specified resource in storage.
+    *
+    * @param \Illuminate\Http\Request $request 
+    * @param int $id
+    * @return \Illuminate\Http\Response  
+    */
+    public function updateById(Request $request, $id) {
+        $request->headers->set('Accept', 'application/json');
+        $data = $request->all(); // Get the request input data as an array.
+        $user_id = auth('sanctum')->user()->id;
+
+        // Step 1. Validate
+        $forum = Forum::find($id);
+        if ($user_id != $forum->user_id) {
+            return response()->json([
+                "status"     => "error",
+                "statusCode" => 403,
+                "message"    => "Sorry, we were unable to update this forum. You can only edit forums you authored."
+            ], 403);
+        }
+
+        // Step 2. Update
+
+        $forum->update($data);
+
+        return response()->json([
+            "status"     => "success",
+            "statusCode" => 200,
+            "message"    => "success",
+            "data"       => $forum
+        ], 200);
+
+    }
+
 }
