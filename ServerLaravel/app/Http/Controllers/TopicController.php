@@ -49,6 +49,29 @@ class TopicController extends Controller
             "message"    => "Created",
             "data"       => $topic
         ], 201);
-
     }
+
+    /**
+    * Gets one topic with posts by id.
+    *
+    * @param \Illuminate\Http\Request $request 
+    * @param int $id
+    */
+    public function getById(Request $request, $id) {
+        $request->headers->set('Accept', 'application/json');  
+        $id = intval($id);  
+
+        $forum = Topic::where("id", "=", $id)
+            // ->with(["posts"])
+            ->with(["user"])
+            ->first();
+
+        return response()->json([
+            "status"     => "success",
+            "statusCode" => 200,
+            "message"    => "success",
+            "data"       => $forum
+        ], 200);
+    }
+
 }

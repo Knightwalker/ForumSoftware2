@@ -56,13 +56,11 @@ const HomePage = () => {
                                             <div className="forum__description">{child.description}</div>
                                         </div>
                                         <div className="forum__item4">
-                                            <p className="forum__stats-number">0</p>
-                                            {/* <p className="forum__stats-number">{child.topics.length}</p> */}
+                                            <p className="forum__stats-number">{child.topics.length}</p>
                                             <p className="forum__stats-text">Topics</p>
                                         </div>
                                         <div className="forum__item5">
-                                            <p className="forum__stats-number">0</p>
-                                            {/* <p className="forum__stats-number">{child.topics.length}</p> */}
+                                            <p className="forum__stats-number">{child.topics.length}</p>
                                             <p className="forum__stats-text">Replies</p>
                                         </div>
                                     </div>

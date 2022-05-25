@@ -23,6 +23,7 @@ Route::post("/identity/register", [IdentityController::class, "register"]);
 Route::post("/identity/login", [IdentityController::class, "login"]);
 Route::get("/forums/getall", [ForumController::class, "getall"]);
 Route::get("/forums/getbyid/{id}", [ForumController::class, "getById"])->where('id', '[0-9]+');
+Route::get("/topics/getbyid/{id}", [TopicController::class, "getById"])->where('id', '[0-9]+');
 
 Route::post("/products/create", [ProductController::class, "create"]);
 Route::get("/products/getById/{id}", [ProductController::class, "getById"]);

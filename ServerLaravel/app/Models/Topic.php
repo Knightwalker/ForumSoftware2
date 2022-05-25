@@ -16,6 +16,10 @@ class Topic extends Model
         "user_id"
     ];
 
+    public function posts() {
+        return $this->hasMany(Post::class, "topic_id", "id");
+    }
+
     public function user() {
         return $this->hasOne(User::class, "id", "user_id");
     }

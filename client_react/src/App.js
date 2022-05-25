@@ -18,6 +18,7 @@ import Error403Page from "./pages/ErrorPages/Error403Page";
 
 // Enums
 import { ENUM_USER_ROLES } from "./enums";
+import ViewTopicPage from "./pages/forum/ViewTopicPage/ViewTopicPage";
 
 function App() {
 
@@ -31,6 +32,7 @@ function App() {
                         <Route path="/identity/login" element={<LoginPage />} />
                         <Route path="/identity/logout" element={<LogoutPage />} />
                         <Route path="/forums/read/:forum_id" element={<ViewForumPage />} />
+                        <Route path="/topics/read/:topic_id" element={<ViewTopicPage />} />
                         <Route path="/forum/create" element={
                             <Protected authorizedFor={ENUM_USER_ROLES.ADMIN}>
                                 <CreateForumPage />

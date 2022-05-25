@@ -13,7 +13,9 @@ class ForumController extends Controller
         $request->headers->set('Accept', 'application/json');
 
         $forumsArr = Forum::where("parent_id", "=", null)
-            ->with(["children"])
+            ->with(["children" => function ($query) {
+                $query->with(["topics"]);
+            }])
             ->with(["topics"])
             ->get();
 
@@ -82,7 +84,11 @@ class ForumController extends Controller
         $id = intval($id);  
 
         $forum = Forum::where("id", "=", $id)
-            ->with(["topics"])
+            ->with(["topics" => function ($query) {
+                $query
+                    ->with(["posts"])
+                    ->with(["user"]);
+            }])
             ->with(["user"])
             ->first();
 

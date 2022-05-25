@@ -1,0 +1,77 @@
+.ViewTopicPage {
+
+}
+
+/* Topic */
+.TopicPage {
+    padding-top: 20px;
+    padding-bottom: 40px;
+}
+
+.topic-page__topic-head {
+    background-color: #1a1c23;
+    color: #9d9a8c;
+    font-family: 'Inter-Bold';
+    font-size: 24px;
+    padding: 10px;
+    text-transform: capitalize;
+    background-color: #094275;
+    border: 2px solid black;
+    color: white;
+}
+
+.topic-page__topic-body {
+    padding: 0px 10px 0px 10px;
+}
+
+.topic-page__topic-foot {
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px 10px 10px 10px;
+}
+
+/* Posts */
+.topic-page__post {
+    background: #F2F2F2;
+}
+
+.topic-page__post-row {
+    display: flex;
+}
+
+.topic-page__post-foot {
+    display: flex;
+    justify-content: flex-end;
+    border-top: 1px solid lightgrey;
+    border-bottom: 1px solid lightgrey;
+    padding: 2px;
+}
+
+.topic {
+    background-color: #fffffb;
+    box-shadow: 5px 5px 10px rgb(0 0 0 / 50%);
+    border-radius: 5px;
+    margin-bottom: 25px;
+}
+
+
+.user-container {
+    width: 200px;
+    text-align: center;
+    min-height: 200px;
+    padding-top: 10px;
+}
+
+.post__main {
+    flex-grow: 1;
+    border-left: 1px solid lightgrey;
+}
+
+.post__head {
+    border-bottom: 1px solid lightgrey;
+    padding: 3px 10px 3px 10px;
+}
+
+.post__body {
+    padding: 3px 10px 3px 10px;
+}

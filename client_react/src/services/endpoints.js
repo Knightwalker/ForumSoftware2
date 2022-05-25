@@ -10,7 +10,8 @@ const URL_FORUMS_GET_BY_ID = (forum_id) => `${BASE_URL}/api/forums/getbyid/${for
 const URL_FORUMS_UPDATE_BY_ID = (forum_id) => `${BASE_URL}/api/forums/updatebyid/${forum_id}`;
 const URL_FORUMS_DELETE_BY_ID = (forum_id) => `${BASE_URL}/api/forums/deletebyid/${forum_id}`;
 
-const URL_TOPIC_CREATE = `${BASE_URL}/api/topics/create`;
+const URL_TOPICS_CREATE = `${BASE_URL}/api/topics/create`;
+const URL_TOPICS_GET_BY_ID = (topic_id) => `${BASE_URL}/api/topics/getbyid/${topic_id}`;
 
 export {
     URL_POST_REGISTER,
@@ -23,5 +24,6 @@ export {
     URL_FORUMS_UPDATE_BY_ID,
     URL_FORUMS_DELETE_BY_ID,
 
-    URL_TOPIC_CREATE
+    URL_TOPICS_CREATE,
+    URL_TOPICS_GET_BY_ID
 }

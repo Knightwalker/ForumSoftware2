@@ -74,12 +74,10 @@ const ViewForumPage = () => {
                                     <div className="topic__author">{topic.description}</div>
                                 </div>
                                 <div className="container-topic__item3">
-                                    <p>10 Replies WIP</p>
-                                    <p>10 VIew WIP</p>
-                                    {/* <p>{topic.posts.length} Replies</p>
-                                    <p>{topic.posts.length} Views</p> */}
+                                    <p>{topic.posts.length} Replies</p>
+                                    <p>{topic.posts.length} Views</p>
                                 </div>
-                                <div className="container-topic__item4">Created By: {topic.user_id}</div>
+                                <div className="container-topic__item4">Created By: {topic.user.username}</div>
                             </div>
                         ))}
 
