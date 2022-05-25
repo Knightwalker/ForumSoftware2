@@ -107,6 +107,7 @@ class ForumController extends Controller
         $user_id = auth('sanctum')->user()->id;
 
         // Step 1. Validate
+        // Check if the user did NOT create this forum.
         $forum = Forum::find($id);
         if ($user_id != $forum->user_id) {
             return response()->json([
@@ -117,16 +118,78 @@ class ForumController extends Controller
         }
 
         // Step 2. Update
-
         $forum->update($data);
+        return response()->json([
+            "status"     => "success",
+            "statusCode" => 200,
+            "message"    => "You have successfully updated this forum!",
+            "data"       => $forum
+        ], 200);
+    }
+
+    /**
+    * Delete the specified resource in storage.
+    *
+    * @param \Illuminate\Http\Request $request 
+    * @param int $id
+    * @return \Illuminate\Http\Response  
+    */
+    public function deleteById(Request $request, $id) {
+        $request->headers->set('Accept', 'application/json');
+        $user_id = auth('sanctum')->user()->id;
+
+        // Step 1. Validate
+        $forum = Forum::withCount("children", "topics")->find($id);
+        // Check if the forum does NOT exist
+        if ($forum == null) {
+            return response()->json([
+                "status"     => "error",
+                "statusCode" => 404,
+                "message"    => "Sorry, we were unable to find this forum. The forum with id \"" . $id . "\" does not exist."
+            ], 404);
+        }
+        // Check if the user did NOT create this forum.
+        if ($user_id != $forum->user_id) {
+            return response()->json([
+                "status"     => "error",
+                "statusCode" => 403,
+                "message"    => "Sorry, we were unable to delete this forum. You can only delete forums you authored."
+            ], 403);
+        }
+        // Check constraint table->foreign("parent_id")->references("id")->on("forums")->onDelete("restrict");
+        // If `forum` has 1 or more `children` then restrict deleting `forum`.
+        if ($forum->children_count > 0) {
+            return response()->json([
+                "status"     => "error",
+                "statusCode" => 400,
+                "message"    => "Sorry, we were unable to delete this forum. You must first move or delete all children forums."
+            ], 400);
+        } 
+        // Check constraint ???;
+        // If `forum` has 1 or more `topics` then restrict deleting `forum`.
+        if ($forum->topics_count > 0) {
+            return response()->json([
+                "status"     => "error",
+                "statusCode" => 400,
+                "message"    => "Sorry, we were unable to delete this forum. You must first move or delete all topics inside this forum."
+            ], 400);
+        } 
+
+        // Step 2. Delete
+        $isDeleted = Forum::destroy($id);
+        if ($isDeleted == false) {
+            return response()->json([
+                "status"     => "error",
+                "statusCode" => 404,
+                "message"    => "Not Found",
+            ], 404);
+        }
 
         return response()->json([
             "status"     => "success",
             "statusCode" => 200,
-            "message"    => "success",
-            "data"       => $forum
+            "message"    => "You have successfully deleted this forum!",
         ], 200);
-
     }
 
 }

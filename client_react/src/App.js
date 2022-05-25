@@ -8,15 +8,16 @@ import HomePage from "./pages/HomePage/HomePage";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import LogoutPage from "./pages/LogoutPage/LogoutPage";
-import CreateForumPage from "./pages/ForumPages/CreateForumPage/CreateForumPage";
+import CreateForumPage from "./pages/forum/CreateForumPage/CreateForumPage";
+import ViewForumPage from "./pages/forum/ViewForumPage/ViewForumPage";
+import CreateTopicPage from "./pages/forum/CreateTopicPage/CreateTopicPage";
+import EditForumPage from "./pages/forum/EditForumPage/EditForumPage";
+import DeleteForumPage from "./pages/forum/DeleteForumPage/DeleteForumPage";
 import Protected from "./routes/Protected";
 import Error403Page from "./pages/ErrorPages/Error403Page";
 
 // Enums
 import { ENUM_USER_ROLES } from "./enums";
-import ViewForumPage from "./pages/ForumPages/ViewForumPage/ViewForumPage";
-import CreateTopicPage from "./pages/forum/CreateTopicPage/CreateTopicPage";
-import EditForumPage from "./pages/forum/EditForumPage/EditForumPage";
 
 function App() {
 
@@ -37,6 +38,7 @@ function App() {
                         } />
                         <Route path="/forums/create/new_topic/:forum_id" element={<CreateTopicPage />} />
                         <Route path="/forums/edit/:forum_id" element={<EditForumPage />} />
+                        <Route path="/forums/delete/:forum_id" element={<DeleteForumPage />} />
                         <Route path="/error/403" element={<Error403Page />} />
                         <Route path="*" element={<div>NOT FOUND PAGE</div>} />
                     </Routes>

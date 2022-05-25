@@ -8,6 +8,7 @@ const URL_FORUMS_GET_ALL = "http://localhost:8000/api/forums/getall";
 const URL_FORUMS_CREATE = `${BASE_URL}/api/forums/create`;
 const URL_FORUMS_GET_BY_ID = (forum_id) => `${BASE_URL}/api/forums/getbyid/${forum_id}`;
 const URL_FORUMS_UPDATE_BY_ID = (forum_id) => `${BASE_URL}/api/forums/updatebyid/${forum_id}`;
+const URL_FORUMS_DELETE_BY_ID = (forum_id) => `${BASE_URL}/api/forums/deletebyid/${forum_id}`;
 
 const URL_TOPIC_CREATE = `${BASE_URL}/api/topics/create`;
 
@@ -20,6 +21,7 @@ export {
     URL_FORUMS_CREATE,
     URL_FORUMS_GET_BY_ID,
     URL_FORUMS_UPDATE_BY_ID,
+    URL_FORUMS_DELETE_BY_ID,
 
     URL_TOPIC_CREATE
 }

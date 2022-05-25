@@ -1,4 +1,5 @@
 import React from "react";
+import "./Error403Page.css";
 
 const Error403Page = () => {
     return (

@@ -16,8 +16,8 @@ const EditForumPage = () => {
                 image_url: "",
             },
             isInvalid: true,
-            hasErrors: false,
-            errorMessage: ""
+            status: false,
+            message: ""
         }
     });
     const { forum_id } = useParams();
@@ -49,13 +49,21 @@ const EditForumPage = () => {
         try {
             const result = await makeRequest_UpdateById(forum_id, payload);
             console.log(result);
-            hookNavigate("/");
+            setState((oldState) => {
+                const newState = JSON.parse(JSON.stringify(oldState));
+                newState.form.status = "SUCCESS";
+                newState.form.message = result.message;
+                return newState;
+            });
+            setTimeout(() => {
+                hookNavigate("/");
+            }, 1000);
         } catch (error) {
             console.log(error);
             setState((oldState) => {
                 const newState = JSON.parse(JSON.stringify(oldState));
-                newState.form.hasErrors = true;
-                newState.form.errorMessage = error.message;
+                newState.form.status = "ERROR";
+                newState.form.message = error.message;
                 return newState;
             });
         }
@@ -124,7 +132,6 @@ const EditForumPage = () => {
                         <div className="form-group">
                             <label htmlFor="type">Type</label>
                             <select name="type" id="type" className="form-control" value={state.form.data.type} onChange={handleChange}>
-                                <option value="category">category</option>
                                 <option value="forum">forum</option>
                             </select>
                         </div>
@@ -140,9 +147,14 @@ const EditForumPage = () => {
                             <label htmlFor="image_url">Image URL</label>
                             <input name="image_url" id="image_url" className="form-control" type="text" placeholder="Enter image url" value={state.form.data.image_url} onChange={handleChange} />
                         </div>
-                        {state.form.hasErrors && (
+                        {state.form.status === "SUCCESS" && (
+                            <div className="success-message">
+                                {state.form.message}
+                            </div>
+                        )}
+                        {state.form.status === "ERROR" && (
                             <div className="error-message">
-                                {state.form.errorMessage}
+                                {state.form.message}
                             </div>
                         )}
                         <div className="mt-2">

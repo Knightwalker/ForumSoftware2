@@ -32,6 +32,15 @@ p {
     background-color: #f2f2f2;
 }
 
+.success-message {
+    border: 1px solid black;
+    border-radius: 4px;
+    margin-top: 6px;
+    padding: 10px;
+    background: green;
+    color: white;
+}
+
 .error-message {
     border: 1px solid black;
     border-radius: 4px;

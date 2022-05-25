@@ -97,7 +97,6 @@ const CreateForumPage = () => {
                         <div className="form-group">
                             <label htmlFor="type">Type</label>
                             <select name="type" id="type" className="form-control" value={state.form.data.type} onChange={handleChange}>
-                                <option value="category">category</option>
                                 <option value="forum">forum</option>
                             </select>
                         </div>
