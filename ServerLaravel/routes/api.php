@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\IdentityController;
 use App\Http\Controllers\ForumController;
 use App\Http\Controllers\TopicController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProductController;
 
 /*
@@ -38,6 +39,7 @@ Route::group(["middleware" => ["auth:sanctum"]], function() {
     Route::put("/forums/updatebyid/{id}", [ForumController::class, "updateById"])->where('id', '[0-9]+');
     Route::delete("/forums/deletebyid/{id}", [ForumController::class, "deleteById"])->where('id', '[0-9]+');
     Route::post("/topics/create", [TopicController::class, "create"]);
+    Route::post("/posts/create", [PostController::class, "create"]);
 
     Route::get("/products", [ProductController::class, "index"]);
 });

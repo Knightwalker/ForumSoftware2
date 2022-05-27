@@ -62,7 +62,9 @@ class TopicController extends Controller
         $id = intval($id);  
 
         $forum = Topic::where("id", "=", $id)
-            // ->with(["posts"])
+            ->with(["posts" => function ($query) {
+                $query->with(["user"]);
+            }])
             ->with(["user"])
             ->first();
 

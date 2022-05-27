@@ -19,6 +19,7 @@ import Error403Page from "./pages/ErrorPages/Error403Page";
 // Enums
 import { ENUM_USER_ROLES } from "./enums";
 import ViewTopicPage from "./pages/forum/ViewTopicPage/ViewTopicPage";
+import CreatePostPage from "./pages/forum/CreatePostPage/CreatePostPage";
 
 function App() {
 
@@ -41,6 +42,7 @@ function App() {
                         <Route path="/forums/create/new_topic/:forum_id" element={<CreateTopicPage />} />
                         <Route path="/forums/edit/:forum_id" element={<EditForumPage />} />
                         <Route path="/forums/delete/:forum_id" element={<DeleteForumPage />} />
+                        <Route path="/topics/create/new_post/:topic_id" element={<CreatePostPage />} />
                         <Route path="/error/403" element={<Error403Page />} />
                         <Route path="*" element={<div>NOT FOUND PAGE</div>} />
                     </Routes>
