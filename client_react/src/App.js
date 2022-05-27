@@ -14,7 +14,6 @@ import CreateTopicPage from "./pages/forum/CreateTopicPage/CreateTopicPage";
 import EditForumPage from "./pages/forum/EditForumPage/EditForumPage";
 import DeleteForumPage from "./pages/forum/DeleteForumPage/DeleteForumPage";
 import Protected from "./routes/Protected";
-import Error403Page from "./pages/ErrorPages/Error403Page";
 
 // Enums
 import { ENUM_USER_ROLES } from "./enums";
@@ -24,6 +23,8 @@ import EditTopicPage from "./pages/forum/EditTopicPage/EditTopicPage";
 import DeleteTopicPage from "./pages/forum/DeleteTopicPage/DeleteTopicPage";
 import EditPostPage from "./pages/forum/EditPostPage/EditPostPage";
 import DeletePostPage from "./pages/forum/DeletePostPage/DeletePostPage";
+import Error404NotFoundPage from "./pages/ErrorPages/Error404NotFoundPage/Error404NotFoundPage";
+import Error403NotAuthorizedPage from "./pages/ErrorPages/Error403NotAuthorizedPage/Error403NotAuthorizedPage";
 
 function App() {
 
@@ -51,8 +52,8 @@ function App() {
                         <Route path="/topics/delete/:topic_id" element={<DeleteTopicPage />} />
                         <Route path="/posts/edit/:post_id" element={<EditPostPage />} />
                         <Route path="/posts/delete/:post_id" element={<DeletePostPage />} />
-                        <Route path="/error/403" element={<Error403Page />} />
-                        <Route path="*" element={<div>NOT FOUND PAGE</div>} />
+                        <Route path="/error/403" element={<Error403NotAuthorizedPage />} />
+                        <Route path="*" element={<Error404NotFoundPage />} />
                     </Routes>
                 </MainLayout>
             </Router>
