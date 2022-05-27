@@ -39,6 +39,8 @@ Route::group(["middleware" => ["auth:sanctum"]], function() {
     Route::put("/forums/updatebyid/{id}", [ForumController::class, "updateById"])->where('id', '[0-9]+');
     Route::delete("/forums/deletebyid/{id}", [ForumController::class, "deleteById"])->where('id', '[0-9]+');
     Route::post("/topics/create", [TopicController::class, "create"]);
+    Route::put("/topics/updatebyid/{id}", [TopicController::class, "updateById"])->where('id', '[0-9]+');
+    Route::delete("/topics/deletebyid/{id}", [TopicController::class, "deleteById"])->where('id', '[0-9]+');
     Route::post("/posts/create", [PostController::class, "create"]);
 
     Route::get("/products", [ProductController::class, "index"]);

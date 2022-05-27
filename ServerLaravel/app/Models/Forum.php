@@ -26,6 +26,10 @@ class Forum extends Model
         return $this->hasMany(Topic::class, "forum_id", "id");
     }
 
+    public function posts() {
+        return $this->hasManyThrough(Post::class, Topic::class);
+    }
+
     public function user() {
         return $this->hasOne(User::class, "id", "user_id");
     }

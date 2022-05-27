@@ -2,7 +2,9 @@ import React, { useState, useEffect } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import "./ViewTopicPage.css";
 import {
-    urlCreateNewPost
+    urlDeleteTopic,
+    urlEditTopic,
+    urlCreateNewPost,
 } from "../../../routes/endpoints";
 
 // Assets
@@ -44,11 +46,13 @@ const ViewTopicPage = () => {
     }, []);
 
     const handleOpenPage_DeleteTopicPage = () => {
-
+        const url = urlDeleteTopic(topic_id);
+        hookNavigate(url);
     }
 
     const handleOpenPage_EditTopicPage = () => {
-
+        const url = urlEditTopic(topic_id);
+        hookNavigate(url);
     }
 
     const handleOpenPage_CreatePostPage = () => {

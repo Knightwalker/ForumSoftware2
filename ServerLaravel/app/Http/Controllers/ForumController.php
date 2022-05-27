@@ -14,7 +14,7 @@ class ForumController extends Controller
 
         $forumsArr = Forum::where("parent_id", "=", null)
             ->with(["children" => function ($query) {
-                $query->with(["topics"]);
+                $query->withCount(["topics", "posts"]);
             }])
             ->with(["topics"])
             ->get();

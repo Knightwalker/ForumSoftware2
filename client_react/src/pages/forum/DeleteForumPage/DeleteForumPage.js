@@ -49,7 +49,7 @@ const DeleteForumPage = () => {
 
     return (
         <div className="DeleteForumPage">
-            <div class="delete-forum">
+            <div className="delete-forum">
                 <h1 className="text-center">Confirm Delete Forum</h1>
 
                 <div className="delete-forum__message">
