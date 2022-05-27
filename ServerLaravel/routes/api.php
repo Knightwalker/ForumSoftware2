@@ -25,6 +25,7 @@ Route::post("/identity/login", [IdentityController::class, "login"]);
 Route::get("/forums/getall", [ForumController::class, "getall"]);
 Route::get("/forums/getbyid/{id}", [ForumController::class, "getById"])->where('id', '[0-9]+');
 Route::get("/topics/getbyid/{id}", [TopicController::class, "getById"])->where('id', '[0-9]+');
+Route::get("/posts/getbyid/{id}", [PostController::class, "getById"])->where('id', '[0-9]+');
 
 Route::post("/products/create", [ProductController::class, "create"]);
 Route::get("/products/getById/{id}", [ProductController::class, "getById"]);
@@ -42,6 +43,8 @@ Route::group(["middleware" => ["auth:sanctum"]], function() {
     Route::put("/topics/updatebyid/{id}", [TopicController::class, "updateById"])->where('id', '[0-9]+');
     Route::delete("/topics/deletebyid/{id}", [TopicController::class, "deleteById"])->where('id', '[0-9]+');
     Route::post("/posts/create", [PostController::class, "create"]);
+    Route::put("/posts/updatebyid/{id}", [PostController::class, "updateById"])->where('id', '[0-9]+');
+    Route::delete("/posts/deletebyid/{id}", [PostController::class, "deleteById"])->where('id', '[0-9]+');
 
     Route::get("/products", [ProductController::class, "index"]);
 });

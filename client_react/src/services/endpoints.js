@@ -16,6 +16,9 @@ const URL_TOPICS_UPDATE_BY_ID = (topic_id) => `${BASE_URL}/api/topics/updatebyid
 const URL_TOPICS_DELETE_BY_ID = (topic_id) => `${BASE_URL}/api/topics/deletebyid/${topic_id}`;
 
 const URL_POSTS_CREATE = `${BASE_URL}/api/posts/create`;
+const URL_POSTS_GET_BY_ID = (post_id) => `${BASE_URL}/api/posts/getbyid/${post_id}`;
+const URL_POSTS_UPDATE_BY_ID = (post_id) => `${BASE_URL}/api/posts/updatebyid/${post_id}`;
+const URL_POSTS_DELETE_BY_ID = (post_id) => `${BASE_URL}/api/posts/deletebyid/${post_id}`;
 
 export {
     URL_POST_REGISTER,
@@ -33,5 +36,8 @@ export {
     URL_TOPICS_UPDATE_BY_ID,
     URL_TOPICS_DELETE_BY_ID,
 
-    URL_POSTS_CREATE
+    URL_POSTS_CREATE,
+    URL_POSTS_GET_BY_ID,
+    URL_POSTS_UPDATE_BY_ID,
+    URL_POSTS_DELETE_BY_ID
 }

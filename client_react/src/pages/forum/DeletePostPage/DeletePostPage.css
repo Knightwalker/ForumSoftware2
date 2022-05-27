@@ -1,0 +1,32 @@
+.DeletePostPage {
+    display: flex;
+    flex-direction: column;
+    background-image: url(https://static0.gamerantimages.com/wordpress/wp-content/uploads/2022/03/Arthas.jpg);
+    background-size: cover;
+    min-height: 400px;
+    justify-content: space-evenly;
+    padding-bottom: 40px;
+}
+
+.delete-forum {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-width: 400px;
+    min-height: 250px;
+    padding: 20px;
+    background-color: #f2f2f2;
+    width: 80%;
+    margin: auto;
+    border: 1px solid black;
+    border-radius: 2px;
+}
+
+.delete-forum__message {
+    min-height: 100px;
+    margin: 20px 0px 20px 0px;
+    padding: 20px;
+    border: 2px solid black;
+    border-radius: 4px;
+    text-align: center;
+}

@@ -22,6 +22,8 @@ import ViewTopicPage from "./pages/forum/ViewTopicPage/ViewTopicPage";
 import CreatePostPage from "./pages/forum/CreatePostPage/CreatePostPage";
 import EditTopicPage from "./pages/forum/EditTopicPage/EditTopicPage";
 import DeleteTopicPage from "./pages/forum/DeleteTopicPage/DeleteTopicPage";
+import EditPostPage from "./pages/forum/EditPostPage/EditPostPage";
+import DeletePostPage from "./pages/forum/DeletePostPage/DeletePostPage";
 
 function App() {
 
@@ -47,6 +49,8 @@ function App() {
                         <Route path="/topics/create/new_post/:topic_id" element={<CreatePostPage />} />
                         <Route path="/topics/edit/:topic_id" element={<EditTopicPage />} />
                         <Route path="/topics/delete/:topic_id" element={<DeleteTopicPage />} />
+                        <Route path="/posts/edit/:post_id" element={<EditPostPage />} />
+                        <Route path="/posts/delete/:post_id" element={<DeletePostPage />} />
                         <Route path="/error/403" element={<Error403Page />} />
                         <Route path="*" element={<div>NOT FOUND PAGE</div>} />
                     </Routes>
