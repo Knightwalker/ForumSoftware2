@@ -53,13 +53,25 @@ const AppContextProvider = (props) => {
     }, []);
 
     return (
-        <AppContext.Provider value={{
-            appState: state,
-            user: user,
-            setUser: setUser
-        }}>
-            {props.children}
-        </AppContext.Provider>
+        <>
+            {(state.status === "INIT" || state.status === "LOADING") && (
+                <div>Loading...</div>
+            )}
+
+            {(state.status === "ERROR") && (
+                <div>Error</div>
+            )}
+
+            {(state.status) === "SUCCESS" && (
+                 <AppContext.Provider value={{
+                    appState: state,
+                    user: user,
+                    setUser: setUser
+                }}>
+                    {props.children}
+                </AppContext.Provider>
+            )}
+        </>
     )
 };
 

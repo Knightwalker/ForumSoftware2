@@ -36,6 +36,8 @@ Route::get("/products/searchByName/{name}", [ProductController::class, "searchBy
 // Protected Routes
 Route::group(["middleware" => ["auth:sanctum"]], function() {
     Route::post("/identity/logout", [IdentityController::class, "logout"]);
+    Route::get("/identity/getbytoken", [IdentityController::class, "getByToken"]);
+    Route::put("/identity/updatebytoken", [IdentityController::class, "updateByToken"]);
     Route::post("/forums/create", [ForumController::class, "create"]);
     Route::put("/forums/updatebyid/{id}", [ForumController::class, "updateById"])->where('id', '[0-9]+');
     Route::delete("/forums/deletebyid/{id}", [ForumController::class, "deleteById"])->where('id', '[0-9]+');

@@ -145,4 +145,71 @@ class IdentityController extends Controller
         ], 200);
     }
 
+    /**
+    * Gets user data, based on the provided user token.
+    *
+    * @param \Illuminate\Http\Request $request 
+    * @return \Illuminate\Http\Response  
+    */
+    public function getByToken(Request $request) {
+        $user_id = auth('sanctum')->user()->id;
+
+        // Step 1. Get user
+        $user = User::find($user_id);
+        
+        // Step 2. Response
+        return response()->json([
+            "status"     => "success",
+            "statusCode" => 200,
+            "message"    => "You have successfully retrieved user with id \"" . $user_id . "\".",
+            "data"       => $user
+        ], 200);
+    }
+
+    /**
+    * Gets user data, based on the provided user token.
+    *
+    * @param \Illuminate\Http\Request $request 
+    * @return \Illuminate\Http\Response  
+    */
+    public function updateByToken(Request $request) {
+        $request->headers->set('Accept', 'application/json');
+        $data = $request->all(); // Get the request input data as an array.
+        $user_id = auth('sanctum')->user()->id;
+
+        // Step 1. Validate
+        $validator = Validator::make($data, [
+            "username"    => "required",
+            "email"       => "required",
+            "image_url"   => "required"
+            ]
+        );
+
+        if ($validator->fails()) {
+            return response()->json([
+                "status"     => "error",
+                "statusCode" => 422,
+                "message"    => "Validation failed",
+                "errors"     => $validator->errors(),
+                "errorsArr"  => $validator->errors()->all()
+            ], 422);
+        }
+        
+        // Step 2. Update
+        $user = User::find($user_id);
+        $user->username = $data["username"];
+        $user->email = $data["email"];
+        $user->image_url = $data["image_url"];
+        $user->save();
+
+        // Step 3. Response
+        return response()->json([
+            "status"     => "success",
+            "statusCode" => 200,
+            "message"    => "You have successfully updated user with id \"" . $user_id . "\".",
+            "data"       => $user
+        ], 200);
+        
+    }
+
 }

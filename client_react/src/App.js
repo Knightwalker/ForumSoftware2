@@ -8,6 +8,7 @@ import HomePage from "./pages/HomePage/HomePage";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import LogoutPage from "./pages/LogoutPage/LogoutPage";
+import ProfilePage from "./pages/identity/ProfilePage/ProfilePage";
 import CreateForumPage from "./pages/forum/CreateForumPage/CreateForumPage";
 import ViewForumPage from "./pages/forum/ViewForumPage/ViewForumPage";
 import CreateTopicPage from "./pages/forum/CreateTopicPage/CreateTopicPage";
@@ -37,6 +38,7 @@ function App() {
                         <Route path="/identity/register" element={<RegisterPage />} />
                         <Route path="/identity/login" element={<LoginPage />} />
                         <Route path="/identity/logout" element={<LogoutPage />} />
+                        <Route path="/identity/profile" element={<ProfilePage />} />
                         <Route path="/forums/read/:forum_id" element={<ViewForumPage />} />
                         <Route path="/topics/read/:topic_id" element={<ViewTopicPage />} />
                         <Route path="/forum/create" element={

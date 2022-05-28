@@ -30,7 +30,7 @@ const MainLayout = (props) => {
                             )}
                             {user.isLoggedIn && (
                                 <>
-                                    <li><Link to="/profile"><div className="nav__item">Welcome, {user.username}</div></Link></li>
+                                    <li><Link to="/identity/profile"><div className="nav__item">Welcome, {user.username}</div></Link></li>
                                     <li><Link to="/identity/logout"><div className="nav__item">Logout</div></Link></li>
                                 </>
                             )}
