@@ -116,7 +116,7 @@ const EditPostPage = () => {
 
     return (
         <div className="EditPostPage">
-            <h1 className="text-center">Edit Topic</h1>
+            <h1 className="text-center">Edit Post</h1>
 
             <div className="row pt-2 pb-2">
                 <div className="col-0 col-sm-2 col-lg-4"></div>
@@ -127,7 +127,7 @@ const EditPostPage = () => {
                             <input name="name" id="name" className="form-control" type="text" placeholder="Enter name" value={state.form.data.name} onChange={handleChange} />
                         </div>
                         <div className="form-group">
-                            <label htmlFor="content">Description</label>
+                            <label htmlFor="content">Content</label>
                             <textarea name="content" id="content" className="form-control" rows="3" placeholder="Enter content" value={state.form.data.content} onChange={handleChange}></textarea>
                         </div>
                         {state.form.status === "SUCCESS" && (

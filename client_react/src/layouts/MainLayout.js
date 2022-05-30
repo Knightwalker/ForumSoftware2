@@ -16,7 +16,6 @@ const MainLayout = (props) => {
                     <div className="navbar__mid">
                         <ul className="nav__list">
                             <li><Link to="/users"><div className="nav__item">User</div></Link></li>
-                            <li><Link to="/groups"><div className="nav__item">Groups</div></Link></li>
                             <li><Link to="/forum/create"><div className="nav__item">Create Forum</div></Link></li>
                         </ul>
                     </div>
@@ -31,7 +30,6 @@ const MainLayout = (props) => {
                             {user.isLoggedIn && (
                                 <>
                                     <li><Link to="/identity/profile"><div className="nav__item">Welcome, {user.username}</div></Link></li>
-                                    <li><Link to="/identity/logout"><div className="nav__item">Logout</div></Link></li>
                                 </>
                             )}
                         </ul>

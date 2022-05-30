@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import { AppContext } from "../../context/AppContext";
+import { AppContext } from "../../../context/AppContext";
 import "./LogoutPage.css";
 
 // Services, Hooks
-import { useLogout } from "../../services/IdentityService";
+import { useLogout } from "../../../services/IdentityService";
 
 const LogoutPage = () => {
     const hookNavigate = useNavigate();

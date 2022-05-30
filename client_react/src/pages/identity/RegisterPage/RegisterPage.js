@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./RegisterPage.css";
-import UsernameImg from "../../assets/auth/username.png";
-import ShieldImg from "../../assets/auth/shield.png";
-import PaperImg from "../../assets/auth/paper.png";
+import UsernameImg from "../../../assets/auth/username.png";
+import ShieldImg from "../../../assets/auth/shield.png";
+import PaperImg from "../../../assets/auth/paper.png";
 
 // Services, Hooks
-import { useRegister } from "../../services/IdentityService";
+import { useRegister } from "../../../services/IdentityService";
 
 const RegisterPage = () => {
     const [hasErrors, setHasErrors] = useState(false);

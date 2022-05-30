@@ -6,7 +6,6 @@ use App\Http\Controllers\IdentityController;
 use App\Http\Controllers\ForumController;
 use App\Http\Controllers\TopicController;
 use App\Http\Controllers\PostController;
-use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,12 +27,6 @@ Route::get("/forums/getbyid/{id}", [ForumController::class, "getById"])->where('
 Route::get("/topics/getbyid/{id}", [TopicController::class, "getById"])->where('id', '[0-9]+');
 Route::get("/posts/getbyid/{id}", [PostController::class, "getById"])->where('id', '[0-9]+');
 
-Route::post("/products/create", [ProductController::class, "create"]);
-Route::get("/products/getById/{id}", [ProductController::class, "getById"]);
-Route::put("/products/updateById/{id}", [ProductController::class, "updateById"]);
-Route::delete("/products/deleteById/{id}", [ProductController::class, "deleteById"]);
-Route::get("/products/searchByName/{name}", [ProductController::class, "searchByName"]);
-
 // Protected Routes
 Route::group(["middleware" => ["auth:sanctum"]], function() {
     Route::post("/identity/logout", [IdentityController::class, "logout"]);
@@ -48,6 +41,4 @@ Route::group(["middleware" => ["auth:sanctum"]], function() {
     Route::post("/posts/create", [PostController::class, "create"]);
     Route::put("/posts/updatebyid/{id}", [PostController::class, "updateById"])->where('id', '[0-9]+');
     Route::delete("/posts/deletebyid/{id}", [PostController::class, "deleteById"])->where('id', '[0-9]+');
-
-    Route::get("/products", [ProductController::class, "index"]);
 });

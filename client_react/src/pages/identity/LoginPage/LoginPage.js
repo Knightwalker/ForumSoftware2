@@ -1,12 +1,12 @@
 import React, { useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { AppContext } from "../../context/AppContext";
-import UsernameImg from "../../assets/auth/username.png";
-import ShieldImg from "../../assets/auth/shield.png";
+import { AppContext } from "../../../context/AppContext";
+import UsernameImg from "../../../assets/auth/username.png";
+import ShieldImg from "../../../assets/auth/shield.png";
 import "./LoginPage.css";
 
 // Services, Hooks
-import { useLogin } from "../../services/IdentityService";
+import { useLogin } from "../../../services/IdentityService";
 
 const LoginPage = () => {
     const hookNavigate = useNavigate();

@@ -4,10 +4,11 @@ import MainLayout from "./layouts/MainLayout";
 import './App.css';
 
 // Pages, Containers, Components
-import HomePage from "./pages/HomePage/HomePage";
-import RegisterPage from "./pages/RegisterPage/RegisterPage";
-import LoginPage from "./pages/LoginPage/LoginPage";
-import LogoutPage from "./pages/LogoutPage/LogoutPage";
+import HomePage from "./pages/home/HomePage/HomePage";
+import UsersPage from "./pages/home/UsersPage/UsersPage";
+import RegisterPage from "./pages/identity/RegisterPage/RegisterPage";
+import LoginPage from "./pages/identity/LoginPage/LoginPage";
+import LogoutPage from "./pages/identity/LogoutPage/LogoutPage";
 import ProfilePage from "./pages/identity/ProfilePage/ProfilePage";
 import CreateForumPage from "./pages/forum/CreateForumPage/CreateForumPage";
 import ViewForumPage from "./pages/forum/ViewForumPage/ViewForumPage";
@@ -15,7 +16,6 @@ import CreateTopicPage from "./pages/forum/CreateTopicPage/CreateTopicPage";
 import EditForumPage from "./pages/forum/EditForumPage/EditForumPage";
 import DeleteForumPage from "./pages/forum/DeleteForumPage/DeleteForumPage";
 import Protected from "./routes/Protected";
-import UsersPage from "./pages/home/UsersPage/UsersPage";
 
 // Enums
 import { ENUM_USER_ROLES } from "./enums";
@@ -36,6 +36,7 @@ function App() {
                 <MainLayout>
                     <Routes>
                         <Route path="/" element={<HomePage />} />
+                        <Route path="/users" element={<UsersPage />} />
                         <Route path="/identity/register" element={<RegisterPage />} />
                         <Route path="/identity/login" element={<LoginPage />} />
                         <Route path="/identity/logout" element={<LogoutPage />} />
@@ -56,7 +57,6 @@ function App() {
                         <Route path="/posts/edit/:post_id" element={<EditPostPage />} />
                         <Route path="/posts/delete/:post_id" element={<DeletePostPage />} />
                         <Route path="/error/403" element={<Error403NotAuthorizedPage />} />  
-                        <Route path="/users" element={<UsersPage />} />
                         <Route path="*" element={<Error404NotFoundPage />} />
                     </Routes>
                 </MainLayout>
