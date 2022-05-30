@@ -5,6 +5,7 @@ const URL_POST_LOGIN = "http://localhost:8000/api/identity/login";
 const URL_POST_LOGOUT = "http://localhost:8000/api/identity/logout";
 const URL_IDENTITY_GET_BY_TOKEN = `${BASE_URL}/api/identity/getbytoken`;
 const URL_IDENTITY_UPDATE_BY_TOKEN = `${BASE_URL}/api/identity/updatebytoken`;
+const URL_IDENTITY_GET_ALL_USERS = `${BASE_URL}/api/identity/getallusers`;
 
 const URL_FORUMS_GET_ALL = "http://localhost:8000/api/forums/getall";
 const URL_FORUMS_CREATE = `${BASE_URL}/api/forums/create`;
@@ -28,6 +29,7 @@ export {
     URL_POST_LOGOUT,
     URL_IDENTITY_GET_BY_TOKEN,
     URL_IDENTITY_UPDATE_BY_TOKEN,
+    URL_IDENTITY_GET_ALL_USERS,
 
     URL_FORUMS_GET_ALL,
     URL_FORUMS_CREATE,

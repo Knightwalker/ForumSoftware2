@@ -212,4 +212,23 @@ class IdentityController extends Controller
         
     }
 
+    /**
+    * Gets all users.
+    *
+    * @param \Illuminate\Http\Request $request 
+    * @return \Illuminate\Http\Response  
+    */
+    public function getAllUsers(Request $request) {
+        $request->headers->set('Accept', 'application/json');
+
+        $user = User::all();
+        // Step 3. Response
+        return response()->json([
+            "status"     => "success",
+            "statusCode" => 200,
+            "message"    => "You have successfully retrieved all users",
+            "data"       => $user
+        ], 200);
+    }
+
 }

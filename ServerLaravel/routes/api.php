@@ -22,6 +22,7 @@ use App\Http\Controllers\ProductController;
 // Public Routes
 Route::post("/identity/register", [IdentityController::class, "register"]);
 Route::post("/identity/login", [IdentityController::class, "login"]);
+Route::get("/identity/getallusers", [IdentityController::class, "getAllUsers"]);
 Route::get("/forums/getall", [ForumController::class, "getall"]);
 Route::get("/forums/getbyid/{id}", [ForumController::class, "getById"])->where('id', '[0-9]+');
 Route::get("/topics/getbyid/{id}", [TopicController::class, "getById"])->where('id', '[0-9]+');

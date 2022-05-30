@@ -60,6 +60,15 @@ const ViewTopicPage = () => {
         hookNavigate(url);
     }
 
+    const transformDate = (data) => {
+        const newDate = new Intl.DateTimeFormat("en-US", { 
+            dateStyle: "medium", 
+            timeStyle: "short",
+            hour12: false
+        }).format(new Date(data));
+        return newDate;
+    };
+
     return (
         <div className="ViewTopicPage">
             <div className="topic-page__topic-head">{state.topic.name}</div>
@@ -76,7 +85,7 @@ const ViewTopicPage = () => {
                                 <div className="post__head">
                                     <div>
                                         <p>{post.name}</p>
-                                        <p>by {post.user.username} on {post.created_at}</p>
+                                        <p>by {post.user.username} on {transformDate(post.created_at)}</p>
                                     </div>
                                 </div>
                                 <div className="post__body">{post.content}</div>
